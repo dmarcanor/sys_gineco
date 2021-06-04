@@ -22,22 +22,14 @@
                                 </jet-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <div :class="activePaciente ? classesNavbarActive : classesNavbarInactive">
-                                    <jet-dropdown align="right" width="48">
-                                        <template #trigger>Pacientes</template>
-                                        <template #content>
-                                            <jet-dropdown-link :href="route('pacientes.list')">
-                                                Pacientes
-                                            </jet-dropdown-link>
-                                            <jet-dropdown-link :href="route('expedientes.list')">
-                                                Expedientes
-                                            </jet-dropdown-link>
-                                            <jet-dropdown-link :href="route('citas.list')">
-                                                Citas
-                                            </jet-dropdown-link>
-                                        </template>
-                                    </jet-dropdown>
-                                </div>
+                                <jet-nav-link :href="route('pacientes.list')" :active="route().current('pacientes.list')">
+                                    Pacientes
+                                </jet-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('consultas.list')" :active="route().current('consultas.list')">
+                                    Consultas
+                                </jet-nav-link>
                             </div>
                         </div>
 

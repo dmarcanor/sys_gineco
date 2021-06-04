@@ -13,8 +13,7 @@ class RouteServiceProvider extends ServiceProvider
 
     private $myCustomRouteFiles = [
         'src/Gineco/Dashboard/Infrastruture/config/routerWeb.php',
-        'src/Gineco/Citas/Infrastruture/config/routerWeb.php',
-        'src/Gineco/Expedientes/Infrastruture/config/routerWeb.php',
+        'src/Gineco/Consultas/Infrastruture/config/routerWeb.php',
         'src/Gineco/Pacientes/Infrastruture/config/routerWeb.php',
     ];
 
