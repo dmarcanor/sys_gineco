@@ -66,15 +66,6 @@
                                                v-model="form.observacion" autocomplete="observacion"/>
                                 </div>
 
-                                <div class="col-span-3">
-                                    <jet-label for="observacion1" value="Observacion1"/>
-                                    <jet-input id="observacion1" type="text" class="mt-1 block w-full"
-                                               v-model="form.observacion" autocomplete="observacion1"/>
-                                </div>
-
-                                <div class="col-span-3">
-                                    <jet-label value="Observacion2"/>
-                                </div>
                             </div>
                         </div>
 
