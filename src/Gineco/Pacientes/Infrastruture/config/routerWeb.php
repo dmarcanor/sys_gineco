@@ -1,11 +1,12 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use SysGineco\Gineco\Pacientes\Infrastruture\controllers\PacientesControllers;
+use SysGineco\Gineco\Pacientes\Infrastruture\controllers\PacientesPostControllers;
 
-//Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-//    Route::get('/pacientes/listar',function () {return Inertia::render('Pacientes/View/List');})->name('pacientes.list');
-//});
+//vistas
+Route::middleware(['auth:sanctum', 'verified'])->get('/pacientes/listar', [PacientesControllers::class, 'list'])->name('pacientes.listar');
+Route::middleware(['auth:sanctum', 'verified'])->get('/pacientes/crear', [PacientesControllers::class, 'create'])->name('pacientes.crear');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/pacientes/listar', function () {
-    return Inertia::render('Pacientes/View/List');
-})->name('pacientes.list');
+//peticiones
+Route::middleware(['auth:sanctum'])->post('/pacientes/create', [PacientesPostControllers::class, 'save'])->name('pacientes.create');
+

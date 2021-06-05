@@ -12,8 +12,15 @@
                     <div
                         class="col-span-12 sm:col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-4 bg-white overflow-hidden shadow-xl sm:rounded-lg py-2 px-2">
                         <div class="col-span-6 col-span-4">
-                            <jet-label for="name" value="Buscar paciente"/>
 
+                        </div>
+
+                        <div class="col-span-6 col-span-4 flex justify-between items-center px-3">
+                            <jet-label for="name" value="Buscar paciente"/>
+                            <div class="inline-flex">
+                                <button class="inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-l font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:bg-blue-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition" @click.prevent="buscar">Buscar</button>
+                                <button class="inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-r font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:bg-blue-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition" @click.prevent="limpiar">Limpiar</button>
+                            </div>
                         </div>
                         <jet-section-border/>
 
@@ -27,23 +34,11 @@
                                 <jet-input id="apellido" type="text" class="mt-1 w-full" v-model="params.apellido"/>
                             </div>
                         </div>
-
-                        <jet-section-border/>
-                        <div class="col-span-6 col-span-4 flex justify-around">
-                            <jet-button :type="'button'" @click.prevent="limpiar">
-                                Limpiar
-                            </jet-button>
-                            <jet-button :type="'button'" @click.prevent="buscar">
-                                Buscar
-                            </jet-button>
-                        </div>
                     </div>
-                    <div
-                        class="col-span-12 sm:col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-8 bg-white overflow-hidden shadow-xl sm:rounded-lg py-2 px-2">
+                    <div class="col-span-12 sm:col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-8 bg-white overflow-hidden shadow-xl sm:rounded-lg py-2 px-2">
                         <div class="col-span-6 col-span-4 flex justify-between items-center px-3">
                             <jet-label for="name" value="Listar paciente"/>
-
-                            <jet-button-href :href="route('dashboard')"> Crear </jet-button-href>
+                            <jet-button-href :href="route('pacientes.crear')"> Crear </jet-button-href>
                         </div>
                         <jet-section-border/>
                     </div>
@@ -60,16 +55,14 @@ import JetLabel from '@/Jetstream/Label'
 import JetButton from '@/Jetstream/Button'
 import JetButtonHref from '@/Jetstream/ButtonHref'
 import JetSectionBorder from '@/Jetstream/SectionBorder'
+import params from "@/Pages/Pacientes/Data/params";
 
 export default {
     name: "List",
 
     data() {
         return {
-            params: {
-                nombre: '',
-                apellido: '',
-            }
+            params: params(),
         }
     },
 
@@ -78,7 +71,7 @@ export default {
             console.log('buscar');
         },
         limpiar() {
-            console.log('limpiar');
+            this.params = params();
         }
     },
 

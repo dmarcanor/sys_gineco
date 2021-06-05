@@ -22,7 +22,7 @@
                                 </jet-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('pacientes.list')" :active="route().current('pacientes.list')">
+                                <jet-nav-link :href="route('pacientes.listar')" :active="route().current('pacientes.listar')">
                                     Pacientes
                                 </jet-nav-link>
                             </div>
@@ -204,7 +204,7 @@ export default {
         },
 
         activePaciente(){
-            return this.route().current('pacientes.list')
+            return this.route().current('pacientes.listar')
                 || this.route().current('expedientes.list')
                 || this.route().current('citas.list');
         }

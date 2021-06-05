@@ -29,7 +29,7 @@ use Inertia\Inertia;
 //
 //Route::middleware(['auth:sanctum', 'verified'])->get('/pacientes/listar', function () {
 //    return Inertia::render('Pacientes/View/List');
-//})->name('pacientes.list');
+//})->name('pacientes.listar');
 //
 //Route::middleware(['auth:sanctum', 'verified'])->get('/expedientes/listar', function () {
 //    return Inertia::render('Expedientes/View/List');

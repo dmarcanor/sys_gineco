@@ -13,10 +13,22 @@ class CreateTablePacientes extends Migration
      */
     public function up()
     {
-        Schema::create('table_pacientes', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->timestamps();
-        });
+        if(! Schema::hasTable('pacientes')){
+            Schema::create('pacientes', function (Blueprint $table) {
+                $table->uuid('id');
+                $table->string('nombre');
+                $table->string('apellido');
+                $table->string('lugar_nacimiento');
+                $table->string('grado_instruccion');
+                $table->integer('edad');
+                $table->dateTime('fecha_nacimiento');
+                $table->string('estado_civil');
+                $table->string('motivo_consulta');
+                $table->string('telefono');
+                $table->string('dirrecion');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
@@ -26,6 +38,7 @@ class CreateTablePacientes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_pacientes');
+        if(Schema::hasTable('pacientes'))
+            Schema::dropIfExists('table_pacientes');
     }
 }
