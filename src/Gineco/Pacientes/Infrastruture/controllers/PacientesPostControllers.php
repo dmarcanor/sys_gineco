@@ -24,19 +24,19 @@ final class PacientesPostControllers extends Controller
     {
         $this->validateRequest($request);
 
-//        ($this->creator)(new PacienteCreatorRequest(
-//            (string) !empty($request->id) ? $request->id : '',
-//            (string) !empty($request->nombre) ? $request->nombre : '',
-//            (string) !empty($request->apellido) ? : '',
-//            (string) !empty($request->lugar_nacimiento) ? $request->apellido : '',
-//            (string) !empty($request->grado_instruccion) ? $request->grado_instruccion : '',
-//            (int) !empty($request->edad) ? $request->edad : 0,
-//            (string) !empty($request->fecha_nacimiento) ? $request->fecha_nacimiento : '',
-//            (string) !empty($request->estado_civil) ? $request->estado_civil : '',
-//            (string) !empty($request->observacion) ? $request->observacion : '',
-//            (string) !empty($request->telefono) ? $request->telefono : '',
-//            (string) !empty($request->dirrecion) ? $request->dirrecion : ''
-//        ));
+        ($this->creator)(new PacienteCreatorRequest(
+             !empty($request->id) ? (string) $request->id : '',
+            !empty($request->nombre) ? (string) $request->nombre : '',
+             !empty($request->apellido) ? (string) $request->apellido : '',
+             !empty($request->lugar_nacimiento) ? (string) $request->apellido : '',
+             !empty($request->grado_instruccion) ? (string) $request->grado_instruccion : '',
+             !empty($request->edad) ? (int) $request->edad : 0,
+             !empty($request->fecha_nacimiento) ? (string) $request->fecha_nacimiento : '',
+             !empty($request->estado_civil) ? (string) $request->estado_civil : '',
+             !empty($request->observacion) ? (string) $request->observacion : '',
+             !empty($request->telefono) ? (string) $request->telefono : '',
+             !empty($request->dirrecion) ? (string) $request->dirrecion : ''
+        ));
 
         return redirect()->route('pacientes.listar');
     }

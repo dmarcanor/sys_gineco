@@ -10,7 +10,7 @@ export default (contex, method) => {
         lugar_nacimiento: '',
         grado_instruccion: '',
         edad: 0,
-        fecha_nacimiento: moment().format('DD/MM/YYYY'),
+        fecha_nacimiento: moment().format('YYYY-MM-DD'),
         estado_civil: '',
         telefono: '',
         dirrecion: '',

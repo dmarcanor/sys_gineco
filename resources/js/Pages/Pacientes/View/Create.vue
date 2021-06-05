@@ -29,7 +29,6 @@
 
                                 <div class="col-span-2">
                                     <jet-label for="lugar_nacimiento" value="Lugar de nacimiento"/>
-                                    <DatePicker v-model="form.lugar_nacimiento"/>
                                     <jet-input id="lugar_nacimiento" type="text" class="mt-1 block w-full" v-model="form.lugar_nacimiento" autocomplete="lugar_nacimiento"/>
                                 </div>
 
@@ -45,7 +44,7 @@
 
                                 <div class="col-span-2">
                                     <jet-label for="fecha_nacimiento" value="Fecha de nacimiento"/>
-                                    <jet-input id="fecha_nacimiento" type="text" class="mt-1 block w-full" v-model="form.fecha_nacimiento" autocomplete="fecha_nacimiento"/>
+                                    <jet-input id="fecha_nacimiento" type="date" class="mt-1 block w-full" v-model="form.fecha_nacimiento" autocomplete="fecha_nacimiento"/>
                                 </div>
 
                                 <div class="col-span-2">

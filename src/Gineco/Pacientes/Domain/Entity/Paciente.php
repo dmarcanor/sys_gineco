@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-
 namespace SysGineco\Gineco\Pacientes\Domain\Entity;
-
 
 use Carbon\Carbon;
 
@@ -78,7 +76,7 @@ final class Paciente
             $lugarNacimiento,
             $gradoInstruccion,
             $edad,
-            Carbon::createFromFormat('d/m/Y', $fechaNacimiento),
+            Carbon::createFromFormat('Y-m-d', $fechaNacimiento),
             $estadoCivil,
             $motivoConsulta,
             $telefono,
