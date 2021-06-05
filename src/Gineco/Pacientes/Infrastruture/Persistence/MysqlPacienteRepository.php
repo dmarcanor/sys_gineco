@@ -23,9 +23,11 @@ final class MysqlPacienteRepository implements PacienteRepository
             'edad' => $paciente->edad(),
             'fecha_nacimiento' => $paciente->fechaNacimiento(),
             'estado_civil' => $paciente->estadoCivil(),
-            'motivo_consulta' => $paciente->motivoConsulta(),
+            'observacion' => $paciente->observacion(),
             'telefono' => $paciente->telefono(),
             'dirrecion' => $paciente->dirrecion(),
+            'created_at' => $paciente->createdAt(),
+            'updated_at' => $paciente->updatedAt()
         ]);
     }
 }

@@ -29,6 +29,7 @@
         "@meforma/vue-toaster": "^1.2.2",
         "moment": "^2.29.1",
         "stylus": "^0.54.8",
-        "stylus-loader": "^3.0.2"
+        "stylus-loader": "^3.0.2",
+        "v-calendar": "^2.3.0"
     }
 }

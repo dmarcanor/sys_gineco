@@ -6,12 +6,18 @@ declare(strict_types=1);
 namespace SysGineco\Gineco\Pacientes\Application\Creator;
 
 
+use SysGineco\Gineco\Pacientes\Domain\Contracts\PacienteRepository;
 use SysGineco\Gineco\Pacientes\Domain\Entity\Paciente;
 
 final class PacienteCreator
 {
-    public function __construct()
+    private $repository;
+
+    public function __construct(
+        PacienteRepository $repository
+    )
     {
+        $this->repository = $repository;
     }
 
     public function __invoke(PacienteCreatorRequest $request): void
@@ -25,11 +31,12 @@ final class PacienteCreator
             $request->edad(),
             $request->fechaNacimiento(),
             $request->estadoCivil(),
-            $request->motivoConsulta(),
+            $request->observacion(),
             $request->telefono(),
             $request->dirrecion()
         );
 
+        $this->repository->create($paciente);
     }
 
 }

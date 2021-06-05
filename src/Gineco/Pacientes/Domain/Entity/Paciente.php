@@ -18,7 +18,7 @@ final class Paciente
     private $edad;
     private $fechaNacimiento;
     private $estadoCivil;
-    private $motivoConsulta;
+    private $observacion;
     private $telefono;
     private $dirrecion;
     private $createdAt;
@@ -33,9 +33,9 @@ final class Paciente
         string $lugarNacimiento,
         string $gradoInstruccion,
         int $edad,
-        string $fechaNacimiento,
+        Carbon $fechaNacimiento,
         string $estadoCivil,
-        string $motivoConsulta,
+        string $observacion,
         string $telefono,
         string $dirrecion,
         Carbon $createdAt,
@@ -50,7 +50,7 @@ final class Paciente
         $this->edad = $edad;
         $this->fechaNacimiento = $fechaNacimiento;
         $this->estadoCivil = $estadoCivil;
-        $this->motivoConsulta = $motivoConsulta;
+        $this->observacion = $observacion;
         $this->telefono = $telefono;
         $this->dirrecion = $dirrecion;
         $this->createdAt = $createdAt;
@@ -78,7 +78,7 @@ final class Paciente
             $lugarNacimiento,
             $gradoInstruccion,
             $edad,
-            $fechaNacimiento,
+            Carbon::createFromFormat('d/m/Y', $fechaNacimiento),
             $estadoCivil,
             $motivoConsulta,
             $telefono,
@@ -118,7 +118,7 @@ final class Paciente
         return $this->edad;
     }
 
-    public function fechaNacimiento(): string
+    public function fechaNacimiento(): Carbon
     {
         return $this->fechaNacimiento;
     }
@@ -128,9 +128,9 @@ final class Paciente
         return $this->estadoCivil;
     }
 
-    public function motivoConsulta(): string
+    public function observacion(): string
     {
-        return $this->motivoConsulta;
+        return $this->observacion;
     }
 
     public function telefono(): string

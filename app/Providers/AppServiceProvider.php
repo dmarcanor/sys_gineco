@@ -3,10 +3,14 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use SysGineco\Gineco\Pacientes\Domain\Contracts\PacienteRepository;
+use SysGineco\Gineco\Pacientes\Infrastruture\Persistence\MysqlPacienteRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
-    private $wiringObjects = [];
+    private $wiringObjects = [
+        PacienteRepository::class => MysqlPacienteRepository::class
+    ];
 
     /**
      * Register any application services.
@@ -25,8 +29,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        array_map(function ($concrete, $abstract) {
+        foreach ($this->wiringObjects as $abstract => $concrete){
             $this->app->bind($abstract, $concrete);
-        }, $this->wiringObjects);
+        }
     }
 }

@@ -1,4 +1,5 @@
 import {uuid} from '@/Pages/Shared/helpers';
+import moment from "moment";
 
 export default (contex, method) => {
     return contex.$inertia.form({
@@ -9,9 +10,10 @@ export default (contex, method) => {
         lugar_nacimiento: '',
         grado_instruccion: '',
         edad: 0,
+        fecha_nacimiento: moment().format('DD/MM/YYYY'),
         estado_civil: '',
-        motivo_consulta: '',
         telefono: '',
         dirrecion: '',
+        observacion: '',
     })
 }

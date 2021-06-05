@@ -20,24 +20,23 @@ final class PacientesPostControllers extends Controller
         $this->creator = $creator;
     }
 
-
     public function save(Request $request)
     {
         $this->validateRequest($request);
 
-        ($this->creator)(new PacienteCreatorRequest(
-            (string) !empty($request->id) ? $request->id : '',
-            (string) !empty($request->nombre) ? $request->nombre : '',
-            (string) !empty($request->apellido) ? : '',
-            (string) !empty($request->lugar_nacimiento) ? $request->apellido : '',
-            (string) !empty($request->grado_instruccion) ? $request->grado_instruccion : '',
-            (int) !empty($request->edad) ? $request->edad : 0,
-            (string) !empty($request->fecha_nacimiento) ? $request->fecha_nacimiento : '',
-            (string) !empty($request->estado_civil) ? $request->estado_civil : '',
-            (string) !empty($request->motivo_consulta) ? $request->motivo_consulta : '',
-            (string) !empty($request->telefono) ? $request->telefono : '',
-            (string) !empty($request->dirrecion) ? $request->dirrecion : ''
-        ));
+//        ($this->creator)(new PacienteCreatorRequest(
+//            (string) !empty($request->id) ? $request->id : '',
+//            (string) !empty($request->nombre) ? $request->nombre : '',
+//            (string) !empty($request->apellido) ? : '',
+//            (string) !empty($request->lugar_nacimiento) ? $request->apellido : '',
+//            (string) !empty($request->grado_instruccion) ? $request->grado_instruccion : '',
+//            (int) !empty($request->edad) ? $request->edad : 0,
+//            (string) !empty($request->fecha_nacimiento) ? $request->fecha_nacimiento : '',
+//            (string) !empty($request->estado_civil) ? $request->estado_civil : '',
+//            (string) !empty($request->observacion) ? $request->observacion : '',
+//            (string) !empty($request->telefono) ? $request->telefono : '',
+//            (string) !empty($request->dirrecion) ? $request->dirrecion : ''
+//        ));
 
         return redirect()->route('pacientes.listar');
     }

@@ -16,7 +16,7 @@ final class PacienteCreatorRequest
     private $edad;
     private $fechaNacimiento;
     private $estadoCivil;
-    private $motivoConsulta;
+    private $observacion;
     private $telefono;
     private $dirrecion;
 
@@ -29,7 +29,7 @@ final class PacienteCreatorRequest
         int $edad,
         string $fechaNacimiento,
         string $estadoCivil,
-        string $motivoConsulta,
+        string $observacion,
         string $telefono,
         string $dirrecion
     )
@@ -42,7 +42,7 @@ final class PacienteCreatorRequest
         $this->edad = $edad;
         $this->fechaNacimiento = $fechaNacimiento;
         $this->estadoCivil = $estadoCivil;
-        $this->motivoConsulta = $motivoConsulta;
+        $this->observacion = $observacion;
         $this->telefono = $telefono;
         $this->dirrecion = $dirrecion;
     }
@@ -87,9 +87,9 @@ final class PacienteCreatorRequest
         return $this->estadoCivil;
     }
 
-    public function motivoConsulta(): string
+    public function observacion(): string
     {
-        return $this->motivoConsulta;
+        return $this->observacion;
     }
 
     public function telefono(): string

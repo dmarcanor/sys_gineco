@@ -50,9 +50,9 @@ final class PacientePostControllerTest extends TestCase
             'edad' => $this->faker->randomElement([20,30,50,90,25,18,5]),
             'fecha_nacimiento' => $this->faker->date('d/m/Y'),
             'estado_civil' => $this->faker->randomElement(['soltero', 'casado']),
-            'motivo_consulta' => $this->faker->text(50),
             'telefono' => $this->faker->phoneNumber,
             'dirrecion' => $this->faker->address,
+            'observacion' => $this->faker->text(50),
         ];
     }
 }

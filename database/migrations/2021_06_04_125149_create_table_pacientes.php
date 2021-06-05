@@ -23,9 +23,11 @@ class CreateTablePacientes extends Migration
                 $table->integer('edad');
                 $table->dateTime('fecha_nacimiento');
                 $table->string('estado_civil');
-                $table->string('motivo_consulta');
+                $table->string('observacion');
                 $table->string('telefono');
                 $table->string('dirrecion');
+
+                $table->primary('id');
                 $table->timestamps();
             });
         }
