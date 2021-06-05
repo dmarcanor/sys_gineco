@@ -11,7 +11,8 @@
             <form @submit.prevent="save" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="md:grid md:grid-cols-6 md:gap-6">
                     <div class="mt-5 md:mt-0 md:col-span-6">
-                        <div class="flex items-center justify-start px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-tl-md sm:rounded-tr-md">
+                        <div
+                            class="flex items-center justify-start px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-tl-md sm:rounded-tr-md">
                             <h2>Datos generales</h2>
                         </div>
 
@@ -19,53 +20,73 @@
                             <div class="md:grid md:grid-cols-8 md:gap-4">
                                 <div class="col-span-2">
                                     <jet-label for="nombre" value="Nombre"/>
-                                    <jet-input id="nombre" type="text" class="mt-1 block w-full" v-model="form.nombre" autocomplete="nombre"/>
+                                    <jet-input id="nombre" type="text" class="mt-1 block w-full" v-model="form.nombre"
+                                               autocomplete="nombre"/>
                                 </div>
 
                                 <div class="col-span-2">
                                     <jet-label for="apellido" value="Apellido"/>
-                                    <jet-input id="apellido" type="text" class="mt-1 block w-full" v-model="form.apellido" autocomplete="apellido"/>
+                                    <jet-input id="apellido" type="text" class="mt-1 block w-full"
+                                               v-model="form.apellido" autocomplete="apellido"/>
                                 </div>
 
                                 <div class="col-span-2">
                                     <jet-label for="lugar_nacimiento" value="Lugar de nacimiento"/>
-                                    <jet-input id="lugar_nacimiento" type="text" class="mt-1 block w-full" v-model="form.lugar_nacimiento" autocomplete="lugar_nacimiento"/>
+                                    <jet-input id="lugar_nacimiento" type="text" class="mt-1 block w-full"
+                                               v-model="form.lugar_nacimiento" autocomplete="lugar_nacimiento"/>
                                 </div>
 
                                 <div class="col-span-2">
                                     <jet-label for="grado_instruccion" value="Grado de intruccion"/>
-                                    <jet-input id="grado_instruccion" type="text" class="mt-1 block w-full" v-model="form.grado_instruccion" autocomplete="grado_instruccion"/>
+                                    <jet-input id="grado_instruccion" type="text" class="mt-1 block w-full"
+                                               v-model="form.grado_instruccion" autocomplete="grado_instruccion"/>
                                 </div>
 
                                 <div class="col-span-1">
                                     <jet-label for="edad" value="Edad"/>
-                                    <jet-input id="edad" type="number" class="mt-1 block w-full" v-model="form.edad" autocomplete="edad"/>
+                                    <jet-input id="edad" type="number" class="mt-1 block w-full" v-model="form.edad"
+                                               autocomplete="edad"/>
                                 </div>
 
                                 <div class="col-span-2">
                                     <jet-label for="fecha_nacimiento" value="Fecha de nacimiento"/>
-                                    <jet-input id="fecha_nacimiento" type="date" class="mt-1 block w-full" v-model="form.fecha_nacimiento" autocomplete="fecha_nacimiento"/>
+                                    <jet-input id="fecha_nacimiento" type="date" class="mt-1 block w-full"
+                                               v-model="form.fecha_nacimiento" autocomplete="fecha_nacimiento"/>
                                 </div>
 
                                 <div class="col-span-2">
                                     <jet-label for="estado_civil" value="Estado civil"/>
-                                    <jet-input id="estado_civil" type="text" class="mt-1 block w-full" v-model="form.estado_civil" autocomplete="estado_civil"/>
+                                    <select2 :id="estado_civil" name="estado_civil" v-model="form.estado_civil" :options="myOptions">
+                                    </select2>
                                 </div>
 
                                 <div class="col-span-3">
                                     <jet-label for="observacion" value="Observacion"/>
-                                    <jet-input id="observacion" type="text" class="mt-1 block w-full" v-model="form.observacion" autocomplete="observacion"/>
+                                    <jet-input id="observacion" type="text" class="mt-1 block w-full"
+                                               v-model="form.observacion" autocomplete="observacion"/>
+                                </div>
+
+                                <div class="col-span-3">
+                                    <jet-label for="observacion1" value="Observacion1"/>
+                                    <jet-input id="observacion1" type="text" class="mt-1 block w-full"
+                                               v-model="form.observacion" autocomplete="observacion1"/>
+                                </div>
+
+                                <div class="col-span-3">
+                                    <jet-label value="Observacion2"/>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
+                        <div
+                            class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
                             <jet-button-href :href="route('pacientes.listar')">Cancelar</jet-button-href>
                             <jet-button :type="'submit'" :disabled="form.processing">Guardar</jet-button>
                         </div>
                     </div>
                 </div>
             </form>
+            <pre>{{form}}</pre>
         </div>
     </app-layout>
 </template>
@@ -86,16 +107,17 @@ export default {
     data() {
         return {
             form: form(this, 'POST'),
+            myOptions: [{id: 'soltera', text: 'Soltera'}, {id: 'casada', text:'Casada'}, {id: 'viuda', text:'Viuda'}]
         }
     },
     methods: {
         save() {
             this.form.post(route('pacientes.create'), {
                 onSuccess: () => {
-                    this.$toast.success("Solicitud realizada con exito",{duration: 5000, position: "top-right"});
+                    this.$toast.success("Solicitud realizada con exito", {duration: 5000, position: "top-right"});
                 },
                 onError: (e) => {
-                    this.$toast.error(e,{duration: 5000, position: "top-right"});
+                    this.$toast.error(e, {duration: 5000, position: "top-right"});
                 }
             });
 

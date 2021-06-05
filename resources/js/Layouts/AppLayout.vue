@@ -182,6 +182,10 @@ export default {
         }
     },
 
+    mounted() {
+        this.configSelect()
+    },
+
     methods: {
         switchToTeam(team) {
             this.$inertia.put(route('current-team.update'), {
@@ -194,6 +198,15 @@ export default {
         logout() {
             this.$inertia.post(route('logout'));
         },
+
+        configSelect() {
+            $('.select2-container').width('100%')
+            $('.select2-selection__rendered').height('40px')
+            $('.select2-selection__rendered').css('padding-top', '5px')
+            $('.select2-selection__arrow').height('40px')
+            $('.select2-selection').height('40px')
+            $('.select2-selection').css('margin-top', '3px')
+        }
     },
     computed: {
         classesNavbarActive() {

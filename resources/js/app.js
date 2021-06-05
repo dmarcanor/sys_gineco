@@ -18,7 +18,7 @@ createApp({
     .mixin({ methods: { route } })
     .use(InertiaPlugin)
     .use(Toaster)
-    .component('Select2', Select2)
+    .component('select2', Select2)
     .mount(el);
 
 InertiaProgress.init({ color: '#4B5563' });
