@@ -21,8 +21,19 @@
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "postcss-import": "^12.0.1",
+        "sass-loader": "^12.0.0",
         "tailwindcss": "^2.0.1",
         "vue": "^3.0.5",
         "vue-loader": "^16.1.2"
+    },
+    "dependencies": {
+        "@meforma/vue-toaster": "^1.2.2",
+        "@ttskch/select2-bootstrap4-theme": "^1.5.2",
+        "jquery": "^3.6.0",
+        "moment": "^2.29.1",
+        "select2": "^4.1.0-rc.0",
+        "stylus": "^0.54.8",
+        "stylus-loader": "^3.0.2",
+        "vue3-select2-component": "^0.1.7"
     }
 }

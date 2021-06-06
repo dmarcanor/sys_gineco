@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
+
+    private $myCustomRouteFiles = [
+        'src/Gineco/Dashboard/Infrastruture/config/routerWeb.php',
+        'src/Gineco/Consultas/Infrastruture/config/routerWeb.php',
+        'src/Gineco/Pacientes/Infrastruture/config/routerWeb.php',
+    ];
+
     /**
      * The path to the "home" route for your application.
      *
@@ -36,16 +43,28 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureRateLimiting();
+        $this->routerApi();
+        $this->routerWeb();
+    }
 
+    private function routerApi()
+    {
         $this->routes(function () {
             Route::prefix('api')
                 ->middleware('api')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
+        });
+    }
 
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
+    private function routerWeb()
+    {
+        $this->routes(function () {
+            array_map(function ($file) {
+                Route::middleware('web')
+                    ->namespace($this->namespace)
+                    ->group(base_path($file));
+            }, $this->myCustomRouteFiles);
         });
     }
 
