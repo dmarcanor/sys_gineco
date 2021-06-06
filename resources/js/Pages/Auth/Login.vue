@@ -33,11 +33,11 @@
                     Log in
                 </jet-button>
 
-                <jet-button :type="'button'" class="ml-4">
-                    <inertia-link :href="route('register')">
+                <inertia-link :href="route('register')">
+                    <jet-button :type="'button'" class="ml-4">
                         Register
-                    </inertia-link>
-                </jet-button>
+                    </jet-button>
+                </inertia-link>
             </div>
 
             <div class="flex items-center justify-end mt-4">
