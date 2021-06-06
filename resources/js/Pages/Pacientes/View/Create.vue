@@ -77,7 +77,6 @@
                     </div>
                 </div>
             </form>
-            <pre>{{form}}</pre>
         </div>
     </app-layout>
 </template>
