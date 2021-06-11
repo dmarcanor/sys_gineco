@@ -20,7 +20,7 @@
                             <div class="md:grid md:grid-cols-8 md:gap-4">
                                 <div class="col-span-2">
                                     <jet-label for="nombre" value="Nombre"/>
-                                    <jet-input id="nombre" type="text" class="mt-1 block w-full" v-model="form.nombre"
+                                    <jet-input id="nombre" type="text" class="mt-1 block w-full" v-model="form.nombre" :required="true" name="nombre"
                                                autocomplete="nombre"/>
                                 </div>
 
