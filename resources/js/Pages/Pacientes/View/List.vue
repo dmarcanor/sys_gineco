@@ -2,7 +2,7 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Pacientes
+                Pacientes ss
             </h2>
         </template>
 
@@ -41,6 +41,19 @@
                             <jet-button-href :href="route('pacientes.crear')"> Crear </jet-button-href>
                         </div>
                         <jet-section-border/>
+                        <table-lite
+                            :has-checkbox="true"
+                            :is-loading="table.isLoading"
+                            :is-re-search="table.isReSearch"
+                            :columns="table.columns"
+                            :rows="table.rows"
+                            :total="table.totalRecordCount"
+                            :sortable="table.sortable"
+                            :messages="table.messages"
+                            @do-search="doSearch"
+                            @is-finished="tableLoadingFinish"
+                            @return-checked-rows="updateCheckedRows"
+                        ></table-lite>
                     </div>
                 </div>
             </div>
@@ -57,13 +70,20 @@ import JetButtonHref from '@/Jetstream/ButtonHref'
 import JetSectionBorder from '@/Jetstream/SectionBorder'
 import params from "@/Pages/Pacientes/Data/params";
 
+import TableLite from "vue3-table-lite";
+import configTable from "@/Pages/Pacientes/Data/configTable";
+
 export default {
     name: "List",
 
     data() {
         return {
             params: params(),
+            table: configTable()
         }
+    },
+
+    mounted() {
     },
 
     methods: {
@@ -72,6 +92,41 @@ export default {
         },
         limpiar() {
             this.params = params();
+        },
+
+        updateCheckedRows (rowsKey){
+            // do your checkbox click event
+            console.log(rowsKey, 'updateCheckedRows');
+        },
+        tableLoadingFinish (elements){
+            console.log(elements, 'tableLoadingFinish')
+        //     this.table.isLoading = false;
+        //     this.table.rows.forEach.call(elements, function (element) {
+        //         if (element.classList.contains("name-btn")) {
+        //             element.addEventListener("click", function () {
+        //                 // do your click event
+        //                 console.log(this.dataset.id + " name-btn click!!");
+        //             });
+        //         }
+        //         if (element.classList.contains("quick-btn")) {
+        //             // do your click event
+        //             element.addEventListener("click", function () {
+        //                 console.log(this.dataset.id + " quick-btn click!!");
+        //             });
+        //         }
+        //     });
+        },
+
+        doSearch (offset, limit, order, sort) {
+            console.log('doSearch')
+            this.table.isLoading = true;
+            this.table.isReSearch = offset == undefined ? true : false;
+            // do your search event to get newRows and new Total
+            this.table.rows = this.table.rows;
+            this.table.totalRecordCount = this.table.totalRecordCount;
+            this.table.sortable.order = order;
+            this.table.sortable.sort = sort;
+            this.table.isLoading = false;
         }
     },
 
@@ -82,6 +137,7 @@ export default {
         JetButton,
         JetSectionBorder,
         JetButtonHref,
+        TableLite,
     },
 }
 </script>
