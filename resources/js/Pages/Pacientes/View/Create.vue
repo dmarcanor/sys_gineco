@@ -56,7 +56,7 @@
 
                                 <div class="col-span-2">
                                     <jet-label for="estado_civil" value="Estado civil"/>
-                                    <select2 :id="estado_civil" name="estado_civil" v-model="form.estado_civil" :options="myOptions">
+                                    <select2 :id="'estado_civil'" name="estado_civil" v-model="form.estado_civil" :options="myOptions">
                                     </select2>
                                 </div>
 

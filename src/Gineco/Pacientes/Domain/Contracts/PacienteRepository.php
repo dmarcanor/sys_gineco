@@ -9,4 +9,5 @@ use SysGineco\Gineco\Pacientes\Domain\Entity\Paciente;
 interface PacienteRepository
 {
     public function create(Paciente $paciente): void;
+    public function find(string $id): ?Paciente;
 }

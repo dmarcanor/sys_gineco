@@ -51,7 +51,7 @@ final class PacientePostControllerTest extends TestCase
             'fecha_nacimiento' => $this->faker->date('d/m/Y'),
             'estado_civil' => $this->faker->randomElement(['soltero', 'casado']),
             'telefono' => $this->faker->phoneNumber,
-            'dirrecion' => $this->faker->address,
+            'direccion' => $this->faker->address,
             'observacion' => $this->faker->text(50),
         ];
     }

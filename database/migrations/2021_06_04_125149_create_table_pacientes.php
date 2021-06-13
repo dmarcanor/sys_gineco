@@ -25,7 +25,7 @@ class CreateTablePacientes extends Migration
                 $table->string('estado_civil');
                 $table->string('observacion');
                 $table->string('telefono');
-                $table->string('dirrecion');
+                $table->string('direccion');
 
                 $table->primary('id');
                 $table->timestamps();
