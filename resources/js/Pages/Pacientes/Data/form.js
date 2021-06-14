@@ -4,7 +4,7 @@ import moment from "moment";
 export default (contex, method) => {
     return contex.$inertia.form({
         _method: method,
-        id: uuid(),
+        id: method === 'POST' ? uuid() : '',
         nombre: '',
         apellido: '',
         lugar_nacimiento: '',
@@ -12,8 +12,8 @@ export default (contex, method) => {
         edad: 0,
         fecha_nacimiento: moment().format('YYYY-MM-DD'),
         estado_civil: '',
+        observacion: '',
         telefono: '',
         direccion: '',
-        observacion: '',
     })
 }

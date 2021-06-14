@@ -30,6 +30,24 @@ final class MysqlPacienteRepository implements PacienteRepository
             'updated_at' => $paciente->updatedAt()
         ]);
     }
+    public function update(Paciente $paciente): void
+    {
+        DB::table(Paciente::TABLE)->where('id', '=', $paciente->id())->limit(1)
+            ->update([
+            'nombre' => $paciente->nombre(),
+            'apellido' => $paciente->apellido(),
+            'lugar_nacimiento' => $paciente->lugarNacimiento(),
+            'grado_instruccion' => $paciente->gradoInstruccion(),
+            'edad' => $paciente->edad(),
+            'fecha_nacimiento' => $paciente->fechaNacimiento(),
+            'estado_civil' => $paciente->estadoCivil(),
+            'observacion' => $paciente->observacion(),
+            'telefono' => $paciente->telefono(),
+            'direccion' => $paciente->direccion(),
+            'created_at' => $paciente->createdAt(),
+            'updated_at' => $paciente->updatedAt()
+        ]);
+    }
 
     public function find(string $id): ?Paciente
     {

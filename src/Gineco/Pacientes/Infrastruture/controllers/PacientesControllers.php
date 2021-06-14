@@ -30,10 +30,10 @@ final class PacientesControllers extends Controller
     }
     public function ver(string $id)
     {
-        $form = ($this->finder)(new PacienteFinderRequest($id));
+        $paciente = ($this->finder)(new PacienteFinderRequest($id));
 
         return Inertia::render('Pacientes/View/Edit', [
-            'form' => $form
+            'paciente' => $paciente
         ]);
     }
 

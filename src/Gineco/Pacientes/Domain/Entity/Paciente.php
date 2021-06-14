@@ -76,7 +76,7 @@ final class Paciente
             $lugarNacimiento,
             $gradoInstruccion,
             $edad,
-            Carbon::createFromFormat('Y-m-d', $fechaNacimiento),
+            Carbon::createFromFormat('Y-m-d', $fechaNacimiento)->startOfDay(),
             $estadoCivil,
             $motivoConsulta,
             $telefono,
@@ -185,4 +185,89 @@ final class Paciente
         return $this->updatedAt;
     }
 
+    public function changeNombre(string $nombreNew): void
+    {
+        if($this->nombre === $nombreNew) return;
+
+        $this->nombre = $nombreNew;
+        $this->updatedAt = $this->CurrentDate();
+    }
+
+    public function changeApellido(string $apellidoNew): void
+    {
+        if($this->apellido === $apellidoNew) return;
+
+        $this->apellido = $apellidoNew;
+        $this->updatedAt = $this->CurrentDate();
+    }
+
+    public function changeLugarNacimiento(string $lugarNacimientoNew): void
+    {
+        if($this->lugarNacimiento === $lugarNacimientoNew) return;
+
+        $this->lugarNacimiento = $lugarNacimientoNew;
+        $this->updatedAt = $this->CurrentDate();
+    }
+
+    public function changeGradoInstruccion(string $gradoInstruccionNew): void
+    {
+        if($this->gradoInstruccion === $gradoInstruccionNew) return;
+
+        $this->gradoInstruccion = $gradoInstruccionNew;
+        $this->updatedAt = $this->CurrentDate();
+    }
+
+    public function changeEdad(int $edadNew): void
+    {
+        if($this->edad === $edadNew) return;
+
+        $this->edad = $edadNew;
+        $this->updatedAt = $this->CurrentDate();
+    }
+
+    public function changeFechaNacimiento(string $fechaNacimientoNew): void
+    {
+        $fechaNacimientoNew = Carbon::createFromFormat('Y-m-d', $fechaNacimientoNew)->startOfDay();
+        if($this->fechaNacimiento === $fechaNacimientoNew) return;
+
+        $this->fechaNacimiento = $fechaNacimientoNew;
+        $this->updatedAt = $this->CurrentDate();
+    }
+
+    public function changeEstadoCivil(string $estadoCivilNew): void
+    {
+        if($this->estadoCivil === $estadoCivilNew) return;
+
+        $this->estadoCivil = $estadoCivilNew;
+        $this->updatedAt = $this->CurrentDate();
+    }
+
+    public function changeObservacion(string $observacionNew): void
+    {
+        if($this->observacion === $observacionNew) return;
+
+        $this->observacion = $observacionNew;
+        $this->updatedAt = $this->CurrentDate();
+    }
+
+    public function changeTelefono(string $telefonoNew): void
+    {
+        if($this->telefono === $telefonoNew) return;
+
+        $this->telefono = $telefonoNew;
+        $this->updatedAt = $this->CurrentDate();
+    }
+
+    public function changeDireccion(string $direccionNew): void
+    {
+        if($this->direccion === $direccionNew) return;
+
+        $this->direccion = $direccionNew;
+        $this->updatedAt = $this->CurrentDate();
+    }
+
+    private function CurrentDate(): Carbon
+    {
+        return Carbon::now()->timezone('America/Caracas');
+    }
 }

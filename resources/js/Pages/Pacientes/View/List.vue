@@ -2,7 +2,7 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Pacientes
+                Listar pacientes
             </h2>
         </template>
 
@@ -65,7 +65,6 @@
                     </div>
                 </div>
             </div>
-            <pre>{{ pacientes }}</pre>
         </div>
     </app-layout>
 </template>
@@ -150,7 +149,13 @@ export default {
                 let id2 = $(e.target).attr("data-id");
                 let id3 = $(e.target).data('id');
                 console.log('there', id, id2, id3);
-                // this.router.get(this.route('pacientes.ver'), id);
+                context.$inertia.get(context.route('pacientes.ver', id));
+            });
+
+            body.off('click', '.btn-options').on("click", '.btn-options', function (e) {
+                let id = $(this).attr("data-id");
+                let drop  = document.querySelector("#dropdown-options"+id);
+                drop.style.display = drop.style.display === 'none' ? 'block' : 'none';
             });
         }
     },
@@ -168,7 +173,7 @@ export default {
 </script>
 
 <style>
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
+/*.dropdown:hover .dropdown-menu {*/
+/*    display: block;*/
+/*}*/
 </style>

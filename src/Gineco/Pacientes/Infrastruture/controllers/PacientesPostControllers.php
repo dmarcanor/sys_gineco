@@ -20,7 +20,7 @@ final class PacientesPostControllers extends Controller
         $this->creator = $creator;
     }
 
-    public function save(Request $request)
+    public function __invoke(Request $request)
     {
         $this->validateRequest($request);
 
