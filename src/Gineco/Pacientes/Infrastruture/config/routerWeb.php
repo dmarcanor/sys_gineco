@@ -13,3 +13,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/pacientes/ver/{id}', [Pac
 Route::middleware(['auth:sanctum'])->post('/pacientes/create', PacientesPostControllers::class)->name('pacientes.create');
 Route::middleware(['auth:sanctum'])->put('/pacientes/update', PacientesPutControllers::class)->name('pacientes.update');
 
+//peticiones ajax select
+Route::get('/pacientes/ajax_get_paciente', [PacientesControllers::class, 'getPacientes']);

@@ -59,4 +59,22 @@ final class PacientesControllers extends Controller
             'pacientes' => $pacientes
         ]);
     }
+
+    public function getPacientes(Request $request)
+    {
+        $pacientes = DB::table('pacientes')
+            ->where(function (Builder $builder) use ($request) {
+
+                if($request->search)
+                    $builder->where('pacientes.nombre', 'like', "%{$request->search}%");
+
+            })
+            ->select([
+                'id',
+                'nombre as text',
+            ])
+            ->get()->toArray();
+
+        return response()->json(['results' => $pacientes], 200);
+    }
 }
