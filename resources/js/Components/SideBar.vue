@@ -17,10 +17,16 @@
 <!--                    </ul>-->
 <!--                </li>-->
                 <li class="nav-item">
-                    <a class="nav-link"  href="#"><i class="icon-info"></i> Pacientes</a>
+                    <a class="nav-link"  href="#"><i class="icon-people"></i> Pacientes</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link"  href="#"><i class="icon-info"></i> Consultas</a>
-                    <a class="nav-link"  href="#"><i class="icon-info"></i> Gestion de cistas</a>
-                    <a class="nav-link"  href="#"><i class="icon-info"></i> Historial medicos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="#"><i class="icon-clock"></i> Gestion de cistas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="#"><i class="icon-heart"></i> Historial medicos</a>
                 </li>
             </ul>
         </nav>
@@ -39,6 +45,13 @@ export default {
             if ($(this).hasClass('nav-dropdown-toggle')) {
                 $(this).parent().toggleClass('open');
             }
+        });
+
+        $('.sidebar-minimizer').click(function(){
+            $('body').toggleClass('sidebar-minimized');
+        });
+        $('.brand-minimizer').click(function(){
+            $('body').toggleClass('brand-minimized');
         });
     }
 }

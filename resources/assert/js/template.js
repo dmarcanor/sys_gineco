@@ -219,15 +219,17 @@ $(document).ready(function($){
     $('body').toggleClass('sidebar-hidden');
     resizeBroadcast();
   });
-
-  $('.sidebar-minimizer').click(function(){
-    $('body').toggleClass('sidebar-minimized');
-    resizeBroadcast();
-  });
-
-  $('.brand-minimizer').click(function(){
-    $('body').toggleClass('brand-minimized');
-  });
+  //
+  // $('.sidebar-minimizer').click(function(){
+  //   $('body').toggleClass('sidebar-minimized');
+  //       console.log("sidebar-minimized");
+  //   resizeBroadcast();
+  // });
+  //
+  // $('.brand-minimizer').click(function(){
+  //   $('body').toggleClass('brand-minimized');
+  //       console.log("brand-minimized");
+  // });
 
   $('.aside-menu-toggler').click(function(){
     $('body').toggleClass('aside-menu-hidden');
