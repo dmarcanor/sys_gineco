@@ -3,7 +3,9 @@
         <nav class="sidebar-nav">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link"  href="#"><i class="icon-speedometer"></i> Escritorio</a>
+                    <inertia-link :href="route('dashboard')" class="nav-link">
+                        <i class="icon-speedometer"></i> Escritorio
+                    </inertia-link>
                 </li>
                 <li class="nav-title">
                     Gineco Sys
@@ -17,7 +19,9 @@
 <!--                    </ul>-->
 <!--                </li>-->
                 <li class="nav-item">
-                    <a class="nav-link"  href="#"><i class="icon-people"></i> Pacientes</a>
+                    <inertia-link :href="route('pacientes.listar')" class="nav-link">
+                        <i class="icon-people"></i> Pacientes
+                    </inertia-link>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"  href="#"><i class="icon-info"></i> Consultas</a>

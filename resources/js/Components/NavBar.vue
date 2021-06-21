@@ -10,7 +10,9 @@
 
         <ul class="nav navbar-nav d-md-down-none">
             <li class="nav-item px-3">
-                <a href="#" class="nav-link">Escritorio</a>
+                <inertia-link :href="route('dashboard')" class="nav-link">
+                    Escritorio
+                </inertia-link>
             </li>
             <li class="nav-item px-3">
                 <a class="nav-link" href="#">Configuraciones</a>

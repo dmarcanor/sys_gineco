@@ -28,7 +28,8 @@ final class PacientesControllers extends Controller
     {
         return Inertia::render('Pacientes/View/Create');
     }
-    public function ver(string $id)
+
+    public function edit(string $id)
     {
         $paciente = ($this->finder)(new PacienteFinderRequest($id));
 
@@ -56,7 +57,8 @@ final class PacientesControllers extends Controller
             ])->get();
 
         return Inertia::render('Pacientes/View/List', [
-            'pacientes' => $pacientes
+            'pacientes' => $pacientes,
+            'breadcrumb' => $this->getBreadcrumb(self::LIST)
         ]);
     }
 
@@ -76,5 +78,31 @@ final class PacientesControllers extends Controller
             ->get()->toArray();
 
         return response()->json(['results' => $pacientes], 200);
+    }
+
+    private function getBreadcrumb(string $view): array
+    {
+        if($view === 'create')
+            return [
+
+            ];
+        if($view === 'edit')
+            return [
+
+            ];
+
+        return [
+            [
+                'name' => 'Paciente',
+                'link' => false,
+                'route' => ''
+            ],
+            [
+                'name' => 'Listar',
+                'link' => false,
+                'route' => 'pacientes.listar'
+            ],
+        ];
+
     }
 }

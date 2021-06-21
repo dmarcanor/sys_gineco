@@ -1,28 +1,15 @@
 <template>
-    <app-layout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Crear pacientes
-            </h2>
-        </template>
-
-        <div class="py-12">
-            <form @submit.prevent="save" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <generals-details :form="form"></generals-details>
-                <br>
-                <form-btn-submit :link-route="route('pacientes.listar')" :disabled="form.processing"></form-btn-submit>
-            </form>
-        </div>
-        <pre>{{form}}</pre>
-    </app-layout>
+    <app-body :user="user">
+        <main>
+            <pre>{{form}}</pre>
+        </main>
+    </app-body>
 </template>
 
 <script>
-import AppLayout from '@/Layouts/AppLayout';
-import FormBtnSubmit from "@/Components/FormBtnSubmit";
-import GeneralsDetails from "@/Pages/Pacientes/Form/GeneralsDetails";
 
 import form from "@/Pages/Pacientes/Data/form"
+import AppBody from "@/Components/AppBody";
 
 export default {
     name: "Create",
@@ -49,9 +36,7 @@ export default {
         },
     },
     components: {
-        AppLayout,
-        FormBtnSubmit,
-        GeneralsDetails,
+        AppBody,
     },
 }
 </script>

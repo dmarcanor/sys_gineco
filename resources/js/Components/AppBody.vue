@@ -5,6 +5,7 @@
             <side-bar></side-bar>
             <!-- Page Content -->
             <main class="main">
+                <breadcrumb :breadcrumb="breadcrumb"></breadcrumb>
                 <slot></slot>
             </main>
         </div>
@@ -14,14 +15,16 @@
 <script>
     import NavBar from "@/Components/NavBar";
     import SideBar from "@/Components/SideBar";
+    import Breadcrumb from "@/Components/Breadcrumb";
 
     export default {
         name: "AppBody",
-        props: ['user'],
+        props: ['user', 'breadcrumb'],
 
         components: {
             NavBar,
-            SideBar
+            SideBar,
+            Breadcrumb,
         }
     }
 </script>

@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{!! asset('assert/css/style.css') !!}" />
+        <link rel="shortcut icon" href="{!! asset('assert/img/favicon.png') !!}">
 
         <!-- Scripts -->
         @routes

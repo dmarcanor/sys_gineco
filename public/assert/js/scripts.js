@@ -133,44 +133,47 @@ function loadCSS(cssFile, end, callback) {
 * AJAX LOAD
 * Load pages asynchronously in ajax mode
 */
-
-if ($.ajaxLoad) {
-
-  var paceOptions = {
-    elements: false,
-    restartOnRequestAfter: false
-  };
-
-  var url = location.hash.replace(/^#/, '');
-
-  if (url != '') {
-    setUpUrl(url);
-  } else {
-    setUpUrl($.defaultPage);
-  }
-
-  $(document).on('click', '.nav a[href!="#"]', function(e) {
-    if ( $(this).parent().parent().hasClass('nav-tabs') || $(this).parent().parent().hasClass('nav-pills') ) {
-      e.preventDefault();
-    } else if ( $(this).attr('target') == '_top' ) {
-      e.preventDefault();
-      var target = $(e.currentTarget);
-      window.location = (target.attr('href'));
-    } else if ( $(this).attr('target') == '_blank' ) {
-      e.preventDefault();
-      var target = $(e.currentTarget);
-      window.open(target.attr('href'));
-    } else {
-      e.preventDefault();
-      var target = $(e.currentTarget);
-      setUpUrl(target.attr('href'));
-    }
-  });
-
-  $(document).on('click', 'a[href="#"]', function(e) {
-    e.preventDefault();
-  });
-}
+//
+// if ($.ajaxLoad) {
+//
+//   var paceOptions = {
+//     elements: false,
+//     restartOnRequestAfter: false
+//   };
+//
+//   var url = location.hash.replace(/^#/, '');
+//
+//   if (url != '') {
+//       console.log('1', url);
+//     setUpUrl(url);
+//   } else {
+//     setUpUrl($.defaultPage);
+//       console.log('2', $.defaultPage);
+//   }
+//
+//   $(document).on('click', '.nav a[href!="#"]', function(e) {
+//     if ( $(this).parent().parent().hasClass('nav-tabs') || $(this).parent().parent().hasClass('nav-pills') ) {
+//       e.preventDefault();
+//     } else if ( $(this).attr('target') == '_top' ) {
+//       e.preventDefault();
+//       var target = $(e.currentTarget);
+//       window.location = (target.attr('href'));
+//     } else if ( $(this).attr('target') == '_blank' ) {
+//       e.preventDefault();
+//       var target = $(e.currentTarget);
+//       window.open(target.attr('href'));
+//     } else {
+//       e.preventDefault();
+//       var target = $(e.currentTarget);
+//         console.log('3', target.attr('href'));
+//         setUpUrl(target.attr('href'));
+//     }
+//   });
+//
+//   $(document).on('click', 'a[href="#"]', function(e) {
+//     e.preventDefault();
+//   });
+// }
 
 function setUpUrl(url) {
 
