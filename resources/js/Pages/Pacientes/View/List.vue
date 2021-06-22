@@ -1,8 +1,9 @@
 <template>
     <app-body :user="user" :breadcrumb="breadcrumb">
         <main>
-            <search-panel></search-panel>
+            <search-panel :params="params"></search-panel>
             <main-table></main-table>
+            <pre>{{params}}</pre>
         </main>
     </app-body>
 </template>

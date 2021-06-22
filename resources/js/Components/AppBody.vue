@@ -29,6 +29,16 @@
     }
 </script>
 
-<style scoped>
+<style>
+    .select2-container--default .select2-selection--single {
+        background-color: #fff !important;
+        border: 1px solid #aaaaaa8f !important;
+        border-radius: 0px !important;
+        height: 35px !important;
+    }
 
+    .select2-selection__arrow .select2-selection__rendered{
+        height: 30px !important;
+        margin-top: 2px !important;
+    }
 </style>

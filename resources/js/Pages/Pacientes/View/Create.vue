@@ -1,7 +1,6 @@
 <template>
-    <app-body :user="user">
+    <app-body :user="user" :breadcrumb="breadcrumb">
         <main>
-            <pre>{{form}}</pre>
         </main>
     </app-body>
 </template>
@@ -13,6 +12,9 @@ import AppBody from "@/Components/AppBody";
 
 export default {
     name: "Create",
+
+    props: ['user', 'breadcrumb'],
+
     data() {
         return {
             form: form(this, 'POST'),

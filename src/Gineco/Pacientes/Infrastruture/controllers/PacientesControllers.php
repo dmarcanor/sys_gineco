@@ -26,7 +26,9 @@ final class PacientesControllers extends Controller
 
     public function create()
     {
-        return Inertia::render('Pacientes/View/Create');
+        return Inertia::render('Pacientes/View/Create', [
+            'breadcrumb' => $this->getBreadcrumb(self::CREATE)
+        ]);
     }
 
     public function edit(string $id)
@@ -84,7 +86,21 @@ final class PacientesControllers extends Controller
     {
         if($view === 'create')
             return [
-
+                [
+                    'name' => 'Paciente',
+                    'link' => true,
+                    'route' => 'pacientes.listar'
+                ],
+                [
+                    'name' => 'Listar',
+                    'link' => true,
+                    'route' => 'pacientes.listar'
+                ],
+                [
+                    'name' => 'Crear',
+                    'link' => false,
+                    'route' => ''
+                ],
             ];
         if($view === 'edit')
             return [
