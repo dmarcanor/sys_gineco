@@ -20,7 +20,7 @@ final class PacientesPostControllers extends Controller
         $this->creator = $creator;
     }
 
-    public function save(Request $request)
+    public function __invoke(Request $request)
     {
         $this->validateRequest($request);
 
@@ -35,7 +35,7 @@ final class PacientesPostControllers extends Controller
              !empty($request->estado_civil) ? (string) $request->estado_civil : '',
              !empty($request->observacion) ? (string) $request->observacion : '',
              !empty($request->telefono) ? (string) $request->telefono : '',
-             !empty($request->dirrecion) ? (string) $request->dirrecion : ''
+             !empty($request->direccion) ? (string) $request->direccion : ''
         ));
 
         return redirect()->route('pacientes.listar');

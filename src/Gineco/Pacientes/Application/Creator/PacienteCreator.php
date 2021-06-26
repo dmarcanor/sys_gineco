@@ -33,7 +33,7 @@ final class PacienteCreator
             $request->estadoCivil(),
             $request->observacion(),
             $request->telefono(),
-            $request->dirrecion()
+            $request->direccion()
         );
 
         $this->repository->create($paciente);

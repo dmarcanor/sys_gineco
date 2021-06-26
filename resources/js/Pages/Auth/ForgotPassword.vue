@@ -1,50 +1,41 @@
 <template>
-    <jet-authentication-card>
-        <template #logo>
-            <jet-authentication-card-logo />
-        </template>
 
-        <div class="mb-4 text-sm text-gray-600">
-            Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
-        </div>
-
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
-        </div>
-
-        <jet-validation-errors class="mb-4" />
-
-        <form @submit.prevent="submit">
-            <div>
-                <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus />
+    <div class="app flex-row align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card-group mb-0">
+                        <div class="card p-4">
+                            <div class="card-body">
+                                <form @submit.prevent="submit">
+                                    <h3>¿Olvidaste tu contraseña?</h3>
+                                    <p class="text-muted">No hay problema. Simplemente díganos su dirección de correo electrónico y le enviaremos un enlace para restablecer la contraseña que le permitirá elegir una nueva.</p>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-addon"><i class="icon-user"></i></span>
+                                        <input type="email" name="email" id="email" class="form-control"
+                                               placeholder="email" required="" v-model="form.email">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <button type="submit" :class="{ 'opacity-25': form.processing }"
+                                                    :disabled="form.processing" class="btn btn-primary px-4">
+                                                Email Password Reset Link
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Email Password Reset Link
-                </jet-button>
-            </div>
-        </form>
-    </jet-authentication-card>
+        </div>
+    </div>
 </template>
 
 <script>
-    import JetAuthenticationCard from '@/Jetstream/AuthenticationCard'
-    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
-    import JetButton from '@/Jetstream/Button'
-    import JetInput from '@/Jetstream/Input'
-    import JetLabel from '@/Jetstream/Label'
-    import JetValidationErrors from '@/Jetstream/ValidationErrors'
-
     export default {
         components: {
-            JetAuthenticationCard,
-            JetAuthenticationCardLogo,
-            JetButton,
-            JetInput,
-            JetLabel,
-            JetValidationErrors
         },
 
         props: {
@@ -61,7 +52,12 @@
 
         methods: {
             submit() {
-                this.form.post(this.route('password.email'))
+                this.form.post(this.route('password.email'), {
+                    onSuccess: (response) => {
+                    },
+                    onError: (error) => {
+                    },
+                })
             }
         }
     }

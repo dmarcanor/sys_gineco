@@ -1,34 +1,51 @@
 <template>
-    <jet-authentication-card>
-        <template #logo>
-            <jet-authentication-card-logo />
-        </template>
 
-        <jet-validation-errors class="mb-4" />
+    <div class="app flex-row align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card-group mb-0">
+                        <div class="card p-4">
+                            <div class="card-body">
+                                <form @submit.prevent="submit">
 
-        <form @submit.prevent="submit">
-            <div>
-                <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus />
+                                    <h3>Inserte su nueva contraseña</h3>
+
+                                    <hr>
+
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-addon"><i class="icon-user"></i></span>
+                                        <input type="email" name="email" id="email" class="form-control"
+                                               placeholder="email" required="" v-model="form.email">
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-addon"><i class="icon-lock"></i></span>
+                                        <input type="password" name="password" id="password" class="form-control"
+                                               placeholder="password" required="" v-model="form.password">
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-addon"><i class="icon-lock"></i></span>
+                                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
+                                               placeholder="New password" required="" v-model="form.password_confirmation">
+                                    </div>
+                                    <br>
+                                    <div class="input-group mb-3 justify-content-center">
+                                        <button type="submit" :class="{ 'opacity-25': form.processing }"
+                                                :disabled="form.processing" class="btn btn-primary px-4">
+                                            Reset Password
+                                        </button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="mt-4">
-                <jet-label for="password" value="Password" />
-                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <jet-label for="password_confirmation" value="Confirm Password" />
-                <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Reset Password
-                </jet-button>
-            </div>
-        </form>
-    </jet-authentication-card>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -68,6 +85,10 @@
         methods: {
             submit() {
                 this.form.post(this.route('password.update'), {
+                    onSuccess: (response) => {
+                    },
+                    onError: (error) => {
+                    },
                     onFinish: () => this.form.reset('password', 'password_confirmation'),
                 })
             }

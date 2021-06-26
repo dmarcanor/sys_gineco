@@ -1,100 +1,80 @@
 <template>
-    <jet-authentication-card>
-        <template #logo>
-            <jet-authentication-card-logo />
-        </template>
-
-        <jet-validation-errors class="mb-4" />
-
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
+    <div class="app flex-row align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card-group mb-0">
+                        <div class="card p-4">
+                            <div class="card-body">
+                                <form @submit.prevent="submit">
+                                    <h1>Acceder</h1>
+                                    <p class="text-muted">Control de acceso al sistema</p>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-addon"><i class="icon-user"></i></span>
+                                        <input type="email" name="email" id="email" class="form-control"
+                                               placeholder="email" required="" v-model="form.email">
+                                    </div>
+                                    <div class="input-group mb-4">
+                                        <span class="input-group-addon"><i class="icon-lock"></i></span>
+                                        <input type="password" name="clave" id="clave" class="form-control"
+                                               placeholder="Password" required="" v-model="form.password">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <button type="submit" class="btn btn-primary px-4">Acceder</button>
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <inertia-link v-if="canResetPassword"
+                                                          :href="route('password.request')" class="btn btn-link px-0">
+                                                Olvidaste tu password?
+                                            </inertia-link>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <form @submit.prevent="submit">
-            <div>
-                <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus />
-            </div>
-
-            <div class="mt-4">
-                <jet-label for="password" value="Password" />
-                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <jet-checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
-                </jet-button>
-
-                <inertia-link :href="route('register')">
-                    <jet-button :type="'button'" class="ml-4">
-                        Register
-                    </jet-button>
-                </inertia-link>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <inertia-link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Forgot your password?
-                </inertia-link>
-            </div>
-        </form>
-    </jet-authentication-card>
+    </div>
 </template>
 
 <script>
-    import JetAuthenticationCard from '@/Jetstream/AuthenticationCard'
-    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
-    import JetButton from '@/Jetstream/Button'
-    import JetInput from '@/Jetstream/Input'
-    import JetCheckbox from '@/Jetstream/Checkbox'
-    import JetLabel from '@/Jetstream/Label'
-    import JetValidationErrors from '@/Jetstream/ValidationErrors'
 
-    export default {
-        components: {
-            JetAuthenticationCard,
-            JetAuthenticationCardLogo,
-            JetButton,
-            JetInput,
-            JetCheckbox,
-            JetLabel,
-            JetValidationErrors
-        },
+export default {
+    components: {},
 
-        props: {
-            canResetPassword: Boolean,
-            status: String
-        },
+    props: {
+        canResetPassword: Boolean,
+        status: String
+    },
 
-        data() {
-            return {
-                form: this.$inertia.form({
-                    email: '',
-                    password: '',
-                    remember: false
+    data() {
+        return {
+            form: this.$inertia.form({
+                email: '',
+                password: '',
+                remember: false
+            })
+        }
+    },
+
+    methods: {
+        submit() {
+            this.form
+                .transform(data => ({
+                    ...data,
+                    remember: this.form.remember ? 'on' : ''
+                }))
+                .post(this.route('login'), {
+                    onSuccess: (response) => {
+                    },
+                    onError: (error) => {
+                    },
+                    onFinish: () => this.form.reset('password'),
                 })
-            }
-        },
-
-        methods: {
-            submit() {
-                this.form
-                    .transform(data => ({
-                        ... data,
-                        remember: this.form.remember ? 'on' : ''
-                    }))
-                    .post(this.route('login'), {
-                        onFinish: () => this.form.reset('password'),
-                    })
-            }
         }
     }
+}
 </script>

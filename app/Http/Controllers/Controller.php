@@ -9,5 +9,8 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
+    const LIST = 'list';
+    const EDIT = 'edit';
+    const CREATE = 'create';
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }

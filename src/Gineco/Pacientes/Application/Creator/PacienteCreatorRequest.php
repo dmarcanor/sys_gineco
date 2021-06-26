@@ -18,7 +18,7 @@ final class PacienteCreatorRequest
     private $estadoCivil;
     private $observacion;
     private $telefono;
-    private $dirrecion;
+    private $direccion;
 
     public function __construct(
         string $id,
@@ -31,7 +31,7 @@ final class PacienteCreatorRequest
         string $estadoCivil,
         string $observacion,
         string $telefono,
-        string $dirrecion
+        string $direccion
     )
     {
         $this->id = $id;
@@ -44,7 +44,7 @@ final class PacienteCreatorRequest
         $this->estadoCivil = $estadoCivil;
         $this->observacion = $observacion;
         $this->telefono = $telefono;
-        $this->dirrecion = $dirrecion;
+        $this->direccion = $direccion;
     }
 
     public function id(): string
@@ -97,8 +97,8 @@ final class PacienteCreatorRequest
         return $this->telefono;
     }
 
-    public function dirrecion(): string
+    public function direccion(): string
     {
-        return $this->dirrecion;
+        return $this->direccion;
     }
 }

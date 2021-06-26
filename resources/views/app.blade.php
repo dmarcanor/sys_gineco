@@ -11,13 +11,16 @@
 {{--        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">--}}
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="{!! asset('assert/css/style.css') !!}" />
+        <link rel="shortcut icon" href="{!! asset('assert/img/favicon.png') !!}">
 
         <!-- Scripts -->
         @routes
+{{--        <script src="{!! asset('script/jquery/jquery-3.1.1.min.js') !!}" type="text/javascript"></script>--}}
+        <script src="{!! asset('assert/js/scripts.js') !!}" type="text/javascript"></script>
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
+    <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden" >
         @inertia
 
         @env ('local')

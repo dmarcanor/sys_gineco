@@ -200,7 +200,6 @@ export default {
         },
 
         configSelect() {
-            $('.select2-container').width('100%')
             $('.select2-selection__rendered').height('40px')
             $('.select2-selection__rendered').css('padding-top', '5px')
             $('.select2-selection__arrow').height('40px')
