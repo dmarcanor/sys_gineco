@@ -7,7 +7,6 @@
                 <form-btn-submit :linkRoute="route('pacientes.listar')" :disabled="form.processing"></form-btn-submit>
             </form>
         </main>
-        <pre>{{form}}</pre>
     </app-body>
 </template>
 
