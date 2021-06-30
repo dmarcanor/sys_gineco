@@ -1,32 +1,29 @@
 <template>
-
-    <app-layout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Ver pacientes
-            </h2>
-        </template>
-
-        <div class="py-12">
-            <form @submit.prevent="save" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <generals-details :form.sync="form"></generals-details>
-                <br>
-                <form-btn-submit :link-route="route('pacientes.listar')" :disabled="form.processing"></form-btn-submit>
+    <app-body :user="user" :breadcrumb="breadcrumb">
+        <main>
+            <form @submit.prevent="save">
+                <generals-details :form="form"></generals-details>
+                <contact-information :form="form"></contact-information>
+                <form-btn-submit :linkRoute="route('pacientes.listar')" :disabled="form.processing"></form-btn-submit>
             </form>
-        </div>
-    </app-layout>
+        </main>
+        <pre>{{form}}</pre>
+    </app-body>
 </template>
 
 <script>
-import AppLayout from '@/Layouts/AppLayout'
-import FormBtnSubmit from "@/Components/FormBtnSubmit";
-import GeneralsDetails from "@/Pages/Pacientes/Form/GeneralsDetails";
+
+import AppBody from "../../../Components/AppBody";
+import GeneralsDetails from "../Form/GeneralsDetails";
+import ContactInformation from "../Form/ContactInformation";
+import FormBtnSubmit from "../../../Components/FormBtnSubmit";
+
 import form from "@/Pages/Pacientes/Data/form"
 
 export default {
     name: "Edit",
 
-    props: ['paciente'],
+    props: ['paciente', 'user', 'breadcrumb'],
 
     data() {
         return {
@@ -58,9 +55,10 @@ export default {
 
 
     components: {
-        AppLayout,
-        FormBtnSubmit,
+        AppBody,
         GeneralsDetails,
+        ContactInformation,
+        FormBtnSubmit,
     },
 }
 </script>

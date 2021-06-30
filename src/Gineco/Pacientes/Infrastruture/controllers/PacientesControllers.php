@@ -36,13 +36,14 @@ final class PacientesControllers extends Controller
         $paciente = ($this->finder)(new PacienteFinderRequest($id));
 
         return Inertia::render('Pacientes/View/Edit', [
-            'paciente' => $paciente
+            'paciente' => $paciente,
+            'breadcrumb' => $this->getBreadcrumb(self::EDIT, $paciente)
         ]);
     }
 
     public function list(Request $request)
     {
-        $pacientes = DB::table('pacientes')
+        $rows = DB::table('pacientes')
             ->where(function (Builder $builder) use ($request) {
                 if($request->nombre)
                     $builder->where('pacientes.nombre', 'like', "%{$request->nombre}%");
@@ -55,11 +56,13 @@ final class PacientesControllers extends Controller
                 'id',
                 'nombre',
                 'apellido',
+                'edad',
+                'estado_civil',
                 'created_at',
             ])->get();
 
         return Inertia::render('Pacientes/View/List', [
-            'pacientes' => $pacientes,
+            'rows' => $rows,
             'breadcrumb' => $this->getBreadcrumb(self::LIST)
         ]);
     }
@@ -82,7 +85,7 @@ final class PacientesControllers extends Controller
         return response()->json(['results' => $pacientes], 200);
     }
 
-    private function getBreadcrumb(string $view): array
+    private function getBreadcrumb(string $view, $object = null): array
     {
         if($view === 'create')
             return [
@@ -104,7 +107,21 @@ final class PacientesControllers extends Controller
             ];
         if($view === 'edit')
             return [
-
+                [
+                    'name' => 'Paciente',
+                    'link' => true,
+                    'route' => 'pacientes.listar'
+                ],
+                [
+                    'name' => 'Listar',
+                    'link' => true,
+                    'route' => 'pacientes.listar'
+                ],
+                [
+                    'name' => 'Ver',
+                    'link' => false,
+                    'route' => ''
+                ],
             ];
 
         return [
