@@ -14,6 +14,8 @@ use SysGineco\Gineco\Shared\Domain\ValueObjects\DateTimeValueObject;
 
 final class Consulta
 {
+    CONST TABLE = 'consultas';
+
     private $id;
     private $pacienteId;
     private $codigo;
@@ -72,6 +74,33 @@ final class Consulta
             $reposoMedico,
             new DateTimeValueObject(),
             new DateTimeValueObject()
+        );
+    }
+
+    public static function fromDatabase(
+        string $id,
+        string $pacienteId,
+        string $codigo,
+        string $fecha,
+        string $observacion,
+        string $indicacion,
+        string $motivo,
+        string $reposoMedico,
+        string $createdAt,
+        string $updatedAt
+    ): self
+    {
+        return new self(
+            $id,
+            $pacienteId,
+            $codigo,
+            $fecha,
+            $observacion,
+            $indicacion,
+            $motivo,
+            $reposoMedico,
+            $createdAt,
+            $updatedAt
         );
     }
 
