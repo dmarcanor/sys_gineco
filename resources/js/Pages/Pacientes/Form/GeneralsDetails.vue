@@ -1,75 +1,59 @@
 <template>
-    <div class="md:grid md:grid-cols-6 md:gap-6">
-        <div class="mt-5 md:mt-0 md:col-span-6">
-            <div
-                class="flex items-center justify-start px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-tl-md sm:rounded-tr-md">
-                <h2>Datos generales</h2>
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> Datos Generales
             </div>
+            <div class="card-body">
 
-            <div class="px-4 py-5 bg-white sm:p-6 shadow">
-                <div class="md:grid md:grid-cols-8 md:gap-4">
-                    <div class="col-span-2">
-                        <jet-label for="nombre" value="Nombre"/>
-                        <jet-input id="nombre" type="text" class="mt-1 block w-full" v-model="nombre"
-                                   :required="true" name="nombre"
-                                   autocomplete="nombre"/>
+                <div class="form-group row">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <label>Nombre</label>
+                        <input type="text" name="nombre" class="form-control" id="Nombre" v-model="nombre" required=""/>
                     </div>
 
-                    <div class="col-span-2">
-                        <jet-label for="apellido" value="Apellido"/>
-                        <jet-input id="apellido" type="text" class="mt-1 block w-full"
-                                   v-model="apellido" :required="true" name="apellido" autocomplete="apellido"/>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <label>Apellido</label>
+                        <input type="text" name="apellido" class="form-control" id="apellido" v-model="apellido" required=""/>
                     </div>
 
-                    <div class="col-span-2">
-                        <jet-label for="lugar_nacimiento" value="Lugar de nacimiento"/>
-                        <jet-input id="lugar_nacimiento" type="text" class="mt-1 block w-full"
-                                   v-model="lugar_nacimiento" autocomplete="lugar_nacimiento"/>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <label>Lugar de nacimiento</label>
+                        <input type="text" name="lugar_nacimiento" class="form-control" id="lugar_nacimiento"
+                               v-model="lugar_nacimiento"/>
                     </div>
 
-                    <div class="col-span-2">
-                        <jet-label for="grado_instruccion" value="Grado de intruccion"/>
-                        <jet-input id="grado_instruccion" type="text" class="mt-1 block w-full"
-                                   v-model="grado_instruccion" autocomplete="grado_instruccion"/>
-                    </div>
-
-                    <div class="col-span-1">
-                        <jet-label for="edad" value="Edad"/>
-                        <jet-input id="edad" type="number" class="mt-1 block w-full" v-model="edad"
-                                   autocomplete="edad"/>
-                    </div>
-
-                    <div class="col-span-2">
-                        <jet-label for="fecha_nacimiento" value="Fecha de nacimiento"/>
-                        <jet-input id="fecha_nacimiento" type="date" class="mt-1 block w-full"
-                                   v-model="fecha_nacimiento" autocomplete="fecha_nacimiento"/>
-                    </div>
-
-                    <div class="col-span-2">
-                        <jet-label for="estado_civil" value="Estado civil"/>
-                        <select2 :id="'estado_civil'" name="estado_civil" v-model="estado_civil"
-                                 @change="myChangeEvent($event)" @select="mySelectEvent($event)"
-                                 :settings="settingsSelect" :options="myOptions">
-                        </select2>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <div class="md:grid md:grid-cols-8 md:gap-4">
-                    <div class="col-span-4">
-                        <jet-label for="observacion" value="Observacion"/>
-                        <jet-input id="observacion" type="text" class="mt-1 block w-full"
-                                   v-model="observacion" autocomplete="observacion"/>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <label>Grado de intruccion</label>
+                        <input type="text" name="grado_instruccion" class="form-control" id="grado_instruccion"
+                               v-model="grado_instruccion"/>
                     </div>
                 </div>
 
-                <br>
-                <br>
-                <div class="md:grid md:grid-cols-8 md:gap-4">
-                    <div class="col-span-2">
-                        <jet-label for="estado_civil2" value="Select Ajax"/>
-                        <select2 :id="'estado_civil2'" name="estado_civil2" :settings="settingsSelectAjax">
-                        </select2>
+                <div class="form-group row">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <label>Edad</label>
+                        <input type="number" name="edad" class="form-control" id="edad" v-model="edad"/>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <label>Fecha de nacimiento</label>
+                        <input type="date" name="fecha_nacimiento" class="form-control" id="fecha_nacimiento"
+                               v-model="fecha_nacimiento"/>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <label>Estado civil</label>
+                        <input type="text" name="estado_civil" class="form-control" id="estado_civil"
+                               v-model="estado_civil"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <label>Observacion</label>
+                        <input type="text" name="observacion" class="form-control" id="observacion"
+                               v-model="observacion"/>
                     </div>
                 </div>
             </div>
@@ -134,10 +118,10 @@ export default {
     },
 
     methods: {
-        myChangeEvent(val){
+        myChangeEvent(val) {
             console.log(val, 'myChangeEvent');
         },
-        mySelectEvent({id, text}){
+        mySelectEvent({id, text}) {
             console.log({id, text}, 'mySelectEvent')
         }
     },

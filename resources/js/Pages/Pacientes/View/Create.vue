@@ -1,6 +1,11 @@
 <template>
     <app-body :user="user" :breadcrumb="breadcrumb">
         <main>
+            <form @submit.prevent="save">
+                <generals-details :form="form"></generals-details>
+                <contact-information :form="form"></contact-information>
+                <form-btn-submit :linkRoute="route('pacientes.listar')" :disabled="form.processing"></form-btn-submit>
+            </form>
         </main>
     </app-body>
 </template>
@@ -9,7 +14,9 @@
 
 import form from "@/Pages/Pacientes/Data/form"
 import AppBody from "@/Components/AppBody";
-
+import GeneralsDetails from "../Form/GeneralsDetails";
+import ContactInformation from "../Form/ContactInformation";
+import FormBtnSubmit from "../../../Components/FormBtnSubmit";
 export default {
     name: "Create",
 
@@ -38,6 +45,9 @@ export default {
         },
     },
     components: {
+        FormBtnSubmit,
+        GeneralsDetails,
+        ContactInformation,
         AppBody,
     },
 }
