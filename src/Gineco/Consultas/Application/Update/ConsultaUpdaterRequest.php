@@ -4,12 +4,6 @@ declare(strict_types=1);
 
 namespace SysGineco\Gineco\Consultas\Application\Update;
 
-use SysGineco\Gineco\Consultas\Domain\ValueObjects\ConsultaId;
-use SysGineco\Gineco\Consultas\Domain\ValueObjects\ConsultaIndicacion;
-use SysGineco\Gineco\Consultas\Domain\ValueObjects\ConsultaMotivo;
-use SysGineco\Gineco\Consultas\Domain\ValueObjects\ConsultaObservacion;
-use SysGineco\Gineco\Consultas\Domain\ValueObjects\ConsultaReposoMedico;
-
 final class ConsultaUpdaterRequest
 {
     private $id;
