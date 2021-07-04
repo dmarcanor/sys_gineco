@@ -49,7 +49,7 @@ final class MysqlConsultaRepository implements ConsultaRepository
 
     public function find(ConsultaId $id): ?Consulta
     {
-        $consulta = DB::table(Consulta::TABLE)->find($id);
+        $consulta = DB::table(Consulta::TABLE)->find($id->value());
 
         return empty($consulta)
             ? null
@@ -64,6 +64,6 @@ final class MysqlConsultaRepository implements ConsultaRepository
                 (string) $consulta->reposo,
                 (string) $consulta->created_at,
                 (string) $consulta->updated_at,
-            )
+            );
     }
 }
