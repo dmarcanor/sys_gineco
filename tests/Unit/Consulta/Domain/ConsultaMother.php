@@ -14,11 +14,13 @@ use SysGineco\Gineco\Consultas\Domain\ValueObjects\ConsultaObservacion;
 use SysGineco\Gineco\Consultas\Domain\ValueObjects\ConsultaReposoMedico;
 use SysGineco\Gineco\Shared\Domain\ValueObjects\DateTimeValueObject;
 use Tests\Unit\Shared\Domain\DateTimeMother;
+use Tests\Unit\Shared\Domain\UuidMother;
 
 final class ConsultaMother
 {
     public static function create(
         ConsultaId $id,
+        string $pacienteId,
         ConsultaCodigo $codigo,
         DateTimeValueObject $fecha,
         ConsultaObservacion $observacion,
@@ -29,6 +31,7 @@ final class ConsultaMother
     {
         return Consulta::create(
             $id,
+            $pacienteId,
             $codigo,
             $fecha,
             $observacion,
@@ -42,6 +45,7 @@ final class ConsultaMother
     {
         return self::create(
             ConsultaIdMother::random(),
+            UuidMother::random(),
             ConsultaCodigoMother::random(),
             new DateTimeValueObject(DateTimeMother::random()),
             ConsultaObservacionMother::random(),
@@ -55,6 +59,7 @@ final class ConsultaMother
     {
         return self::create(
             ConsultaIdMother::create($request->id()),
+            $request->pacienteId(),
             ConsultaCodigoMother::create($request->codigo()),
             new DateTimeValueObject($request->fecha()),
             ConsultaObservacionMother::create($request->observacion()),

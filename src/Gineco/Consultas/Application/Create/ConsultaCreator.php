@@ -27,6 +27,7 @@ final class ConsultaCreator
     {
         $consulta = Consulta::create(
             new ConsultaId($request->id()),
+            $request->pacienteId(),
             new ConsultaCodigo($request->codigo()),
             new DateTimeValueObject($request->fecha()),
             new ConsultaObservacion($request->observacion()),

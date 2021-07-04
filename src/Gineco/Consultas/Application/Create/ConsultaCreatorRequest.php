@@ -7,6 +7,7 @@ namespace SysGineco\Gineco\Consultas\Application\Create;
 final class ConsultaCreatorRequest
 {
     private $id;
+    private $pacienteId;
     private $codigo;
     private $fecha;
     private $observacion;
@@ -16,6 +17,7 @@ final class ConsultaCreatorRequest
 
     public function __construct(
         string $id,
+        string $pacienteId,
         string $codigo,
         string $fecha,
         ?string $observacion,
@@ -25,6 +27,7 @@ final class ConsultaCreatorRequest
     )
     {
         $this->id = $id;
+        $this->pacienteId = $pacienteId;
         $this->codigo = $codigo;
         $this->fecha = $fecha;
         $this->observacion = $observacion;
@@ -36,6 +39,11 @@ final class ConsultaCreatorRequest
     public function id(): string
     {
         return $this->id;
+    }
+
+    public function pacienteId(): string
+    {
+        return $this->pacienteId;
     }
 
     public function codigo(): string

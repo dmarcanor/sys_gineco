@@ -11,14 +11,12 @@ use SysGineco\Gineco\Consultas\Domain\ValueObjects\ConsultaId;
 
 final class ConsultaFinder
 {
-    private $repository;
     private $finder;
 
     public function __construct(
         ConsultaRepository $repository
     )
     {
-        $this->repository = $repository;
         $this->finder = new Finder($repository);
     }
 

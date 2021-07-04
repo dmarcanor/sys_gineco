@@ -12,6 +12,7 @@ use Tests\Unit\Consulta\Domain\ConsultaMotivoMother;
 use Tests\Unit\Consulta\Domain\ConsultaObservacionMother;
 use Tests\Unit\Consulta\Domain\ConsultaReposoMedicoMother;
 use Tests\Unit\Shared\Domain\DateTimeMother;
+use Tests\Unit\Shared\Domain\UuidMother;
 
 final class ConsultaCreatorRequestMother
 {
@@ -19,6 +20,7 @@ final class ConsultaCreatorRequestMother
     {
         return new ConsultaCreatorRequest(
             ConsultaIdMother::random()->value(),
+            UuidMother::random(),
             ConsultaCodigoMother::random()->value(),
             DateTimeMother::random(),
             ConsultaObservacionMother::random()->value(),

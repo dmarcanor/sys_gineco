@@ -15,6 +15,7 @@ use SysGineco\Gineco\Shared\Domain\ValueObjects\DateTimeValueObject;
 final class Consulta
 {
     private $id;
+    private $pacienteId;
     private $codigo;
     private $fecha;
     private $observacion;
@@ -26,6 +27,7 @@ final class Consulta
 
     public function __construct(
         ConsultaId $id,
+        string $pacienteId,
         ConsultaCodigo $codigo,
         DateTimeValueObject $fecha,
         ConsultaObservacion $observacion,
@@ -37,6 +39,7 @@ final class Consulta
     )
     {
         $this->id = $id;
+        $this->pacienteId = $pacienteId;
         $this->codigo = $codigo;
         $this->fecha = $fecha;
         $this->observacion = $observacion;
@@ -49,6 +52,7 @@ final class Consulta
 
     public static function create(
         ConsultaId $id,
+        string $pacienteId,
         ConsultaCodigo $codigo,
         DateTimeValueObject $fecha,
         ConsultaObservacion $observacion,
@@ -59,6 +63,7 @@ final class Consulta
     {
         return new self(
             $id,
+            $pacienteId,
             $codigo,
             $fecha,
             $observacion,
@@ -73,6 +78,11 @@ final class Consulta
     public function id(): ConsultaId
     {
         return $this->id;
+    }
+
+    public function pacienteId(): string
+    {
+        return $this->pacienteId;
     }
 
     public function codigo(): ConsultaCodigo
@@ -113,6 +123,15 @@ final class Consulta
     public function updatedAt(): DateTimeValueObject
     {
         return $this->updatedAt;
+    }
+
+    public function updatePacienteId(string $pacienteId): void
+    {
+        if ($this->pacienteId === $pacienteId)
+            return;
+
+        $this->pacienteId = $pacienteId;
+        $this->updatedAt = new DateTimeValueObject();
     }
 
     public function updateObservacion(ConsultaObservacion $observacion): void
