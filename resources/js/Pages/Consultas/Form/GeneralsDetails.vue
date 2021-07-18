@@ -14,13 +14,13 @@
 
                     <div class="form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
                         <label>Paciente</label>
-                        <select2 :id="'paciente_id'" name="paciente_id" :settings="settingsSelectAjax">
+                        <select2 :id="'paciente_id'" name="paciente_id" v-model="paciente_id" :settings="settingsSelectAjax">
                         </select2>
                     </div>
 
                     <div class="form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
                         <label>Fecha de la consulta</label>
-                        <input type="date" name="fecha" class="form-control" id="fecha"
+                        <input type="datetime-local" name="fecha" class="form-control" id="fecha"
                                v-model="fecha"/>
                     </div>
                 </div>
