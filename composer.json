@@ -29,6 +29,7 @@
         "psr-4": {
             "App\\": "app/",
             "SysGineco\\": "src/",
+            "Tests\\": "tests/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
