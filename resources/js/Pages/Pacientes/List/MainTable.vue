@@ -67,8 +67,8 @@ export default {
         opciones(row) {
             this.$refs.ModalOpciones.show(row);
         },
-        buscar() {
-            this.$emit('buscar')
+        async buscar() {
+            await this.$emit('buscar')
         },
         initJquery() {
             let context = this;
