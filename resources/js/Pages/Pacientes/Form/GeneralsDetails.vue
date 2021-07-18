@@ -44,8 +44,10 @@
 
                     <div class="form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
                         <label>Estado civil</label>
-                        <input type="text" name="estado_civil" class="form-control" id="estado_civil"
-                               v-model="estado_civil"/>
+                        <select2 :id="'estado_civil'" name="estado_civil" v-model="estado_civil"
+                                 @change="myChangeEvent($event)" @select="mySelectEvent($event)"
+                                 :settings="settingsSelect" :options="myOptions">
+                        </select2>
                     </div>
                 </div>
 

@@ -8,7 +8,6 @@
             <div class="card-body">
 
                 <div class="form-group row">
-
                     <div class="form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
                         <label>Nombre</label>
                         <input type="text" name="nombre" class="form-control" id="Nombre" v-model="params.nombre"/>
@@ -34,7 +33,20 @@
                         <select2 :id="'estado_civil2'" name="estado_civil2" :settings="settingsSelectAjax">
                         </select2>
                     </div>
+                </div>
 
+
+                <div class="form-group row justify-content-end">
+                    <div class="col-md-2 d-flex justify-content-center">
+                        <button class="btn btn-info btn-block" @click.prevent="limpiar"><i
+                            class="fa fa-clean"></i> Limpiar
+                        </button>
+                    </div>
+                    <div class="col-md-2 d-flex justify-content-center">
+                        <button class="btn btn-primary btn-block" @click.prevent="buscar"><i
+                            class="fa fa-search"></i> Buscar
+                        </button>
+                    </div>
                 </div>
 
             </div>
@@ -75,6 +87,13 @@ export default {
         },
         mySelectEvent({id, text}){
             console.log({id, text}, 'mySelectEvent')
+        },
+        async limpiar() {
+            await this.$emit('limpiar')
+            await this.$emit('buscar')
+        },
+        async buscar() {
+            await this.$emit('buscar')
         }
     },
 
