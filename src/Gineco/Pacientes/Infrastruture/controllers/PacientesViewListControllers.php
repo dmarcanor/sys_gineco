@@ -14,7 +14,7 @@ class PacientesViewListControllers extends Controller
 
     public function execute(Request $request)
     {
-        $rows = DB::table('pacientes')
+        $paginate = DB::table('pacientes')
             ->where(function (Builder $builder) use ($request) {
                 if($request->nombre)
                     $builder->where('pacientes.nombre', 'like', "%{$request->nombre}%");
@@ -30,11 +30,19 @@ class PacientesViewListControllers extends Controller
                 'edad',
                 'estado_civil',
                 'created_at',
-            ])->get();
+            ])->paginate(10);
 
         return Inertia::render('Pacientes/View/List', [
-            'rows' => $rows,
-            'breadcrumb' => $this->getBreadcrumb()
+            'rows' => $paginate->items(),
+            'breadcrumb' => $this->getBreadcrumb(),
+            'paginacion' => [
+                'total' => $paginate->total(),
+                'current_page' => $paginate->currentPage(),
+                'last_page' => $paginate->lastPage(),
+                'per_page' => $paginate->perPage(),
+                'from' => $paginate->currentPage(),
+                'to' => $paginate->lastPage(),
+            ]
         ]);
     }
 
