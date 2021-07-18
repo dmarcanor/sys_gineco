@@ -11,4 +11,5 @@ interface PacienteRepository
     public function create(Paciente $paciente): void;
     public function update(Paciente $paciente): void;
     public function find(string $id): ?Paciente;
+    public function searcherList(array $clause);
 }

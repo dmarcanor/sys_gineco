@@ -40,6 +40,7 @@
                     </tr>
                     </tbody>
                 </table>
+                <paginacion :paginacion="paginacion" :params="params" @buscar="buscar" ></paginacion>
             </div>
         </div>
         <modal-opciones name="ModalOpciones" ref="ModalOpciones"></modal-opciones>
@@ -47,12 +48,13 @@
 </template>
 
 <script>
-import ModalOpciones from "../Modals/ModalOpciones";
+import Paginacion from "@/Components/paginacion";
+import ModalOpciones from "@/Pages/Pacientes/Modals/ModalOpciones";
 
 export default {
     name: "MainTable",
 
-    props: ['rows'],
+    props: ['rows', 'paginacion', 'params'],
 
     mounted () {
         this.initJquery();
@@ -64,6 +66,9 @@ export default {
         },
         opciones(row) {
             this.$refs.ModalOpciones.show(row);
+        },
+        async buscar() {
+            await this.$emit('buscar')
         },
         initJquery() {
             let context = this;
@@ -80,6 +85,7 @@ export default {
     },
 
     components: {
+        Paginacion,
         ModalOpciones
     }
 }
