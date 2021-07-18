@@ -15,6 +15,7 @@ class ConsultasViewListControllers extends Controller
     public function execute(Request $request)
     {
         $rows = DB::table('consultas')
+            ->join('pacientes', 'pacientes.id', '=', 'consultas.paciente_id')
 //            ->where(function (Builder $builder) use ($request) {
 //                if($request->nombre)
 //                    $builder->where('consultas.nombre', 'like', "%{$request->nombre}%");
@@ -22,12 +23,14 @@ class ConsultasViewListControllers extends Controller
 //                if($request->apellido)
 //                    $builder->where('pacientes.apellido', 'like', "%{$request->apellido}%");
 //            })
-            ->orderBy('created_at', 'desc')
+            ->orderBy('consultas.created_at', 'desc')
             ->select([
-                'id',
-                'codigo',
-                'paciente_id',
-                'fecha'
+                'consultas.id',
+                'consultas.codigo',
+                'consultas.paciente_id',
+                DB::raw('pacientes.nombre as paciente_nombre'),
+                DB::raw('pacientes.apellido as paciente_apellido'),
+                'consultas.fecha'
             ])->get();
 
         return Inertia::render('Consultas/View/List', [
