@@ -3,8 +3,7 @@
         <main>
             <form @submit.prevent="save">
                 <generals-details :form="form"></generals-details>
-                <contact-information :form="form"></contact-information>
-                <form-btn-submit :linkRoute="route('pacientes.listar')" :disabled="form.processing"></form-btn-submit>
+                <form-btn-submit :linkRoute="route('consultas.list')" :disabled="form.processing"></form-btn-submit>
             </form>
         </main>
     </app-body>
@@ -15,7 +14,6 @@
 import form from "@/Pages/Consultas/Data/form"
 import AppBody from "@/Components/AppBody";
 import GeneralsDetails from "../Form/GeneralsDetails";
-import ContactInformation from "../Form/ContactInformation";
 import FormBtnSubmit from "../../../Components/FormBtnSubmit";
 export default {
     name: "Create",
@@ -29,7 +27,7 @@ export default {
     },
     methods: {
         save() {
-            this.form.post(route('pacientes.create'), {
+            this.form.post(route('consultas.create'), {
                 onSuccess: () => {
                     this.$toast.success("Solicitud realizada con exito", {duration: 5000, position: "top-right"});
                 },
@@ -47,7 +45,6 @@ export default {
     components: {
         FormBtnSubmit,
         GeneralsDetails,
-        ContactInformation,
         AppBody,
     },
 }

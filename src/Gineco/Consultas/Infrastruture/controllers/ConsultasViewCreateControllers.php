@@ -22,12 +22,12 @@ class ConsultasViewCreateControllers extends Controller
             [
                 'name' => 'Paciente',
                 'link' => true,
-                'route' => 'consultas.listar'
+                'route' => 'consultas.list'
             ],
             [
                 'name' => 'Listar',
                 'link' => true,
-                'route' => 'consultas.listar'
+                'route' => 'consultas.list'
             ],
             [
                 'name' => 'Crear',
