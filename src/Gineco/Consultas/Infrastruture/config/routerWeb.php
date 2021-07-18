@@ -1,11 +1,11 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use SysGineco\Gineco\Consultas\Infrastruture\controllers\ConsultasViewListControllers;
 
-//Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-//    Route::get('/expedientes/listar',function () {return Inertia::render('Expedientes/View/List');})->name('expedientes.list');
-//});
+//vistas
+Route::middleware(['auth:sanctum', 'verified'])->get('/consultas/listar', [ConsultasViewListControllers::class, 'execute'])->name('consultas.list');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/consultas/listar', function () {
-    return Inertia::render('Consultas/View/List');
-})->name('consultas.list');
+//peticiones
+
+//peticiones ajax select

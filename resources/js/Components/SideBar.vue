@@ -24,7 +24,9 @@
                     </inertia-link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="#"><i class="icon-info"></i> Consultas</a>
+                    <inertia-link :href="route('consultas.list')" class="nav-link">
+                        <i class="icon-info"></i> Consultas
+                    </inertia-link>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"  href="#"><i class="icon-clock"></i> Gestion de cistas</a>
