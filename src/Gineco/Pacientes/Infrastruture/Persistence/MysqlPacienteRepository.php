@@ -8,6 +8,8 @@ use SysGineco\Gineco\Pacientes\Domain\Contracts\PacienteRepository;
 use SysGineco\Gineco\Pacientes\Domain\Entity\Paciente;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 final class MysqlPacienteRepository implements PacienteRepository
 {
@@ -70,5 +72,12 @@ final class MysqlPacienteRepository implements PacienteRepository
         );
 
 
+    }
+
+    public function searcherList(array $clause)
+    {
+        $query = DB::table(Paciente::TABLE);
+        $query->where(function (Builder $builder) use($clause) {(new MysqlPacienteFilters())->apply($builder, $clause);});
+        return $query->paginate(10);
     }
 }

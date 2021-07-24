@@ -88,11 +88,12 @@ export default {
         mySelectEvent({id, text}){
             console.log({id, text}, 'mySelectEvent')
         },
-        limpiar() {
-            this.$emit('limpiar')
+        async limpiar() {
+            await this.$emit('limpiar')
+            await this.$emit('buscar')
         },
-        buscar() {
-            this.$emit('buscar')
+        async buscar() {
+            await this.$emit('buscar')
         }
     },
 
