@@ -2,7 +2,7 @@
     <app-body :user="user" :breadcrumb="breadcrumb">
         <main>
             <form @submit.prevent="save">
-                <generals-details :form="form"></generals-details>
+                <generals-details :form="form" :code="code"></generals-details>
                 <form-btn-submit :linkRoute="route('consultas.list')" :disabled="form.processing"></form-btn-submit>
             </form>
         </main>
@@ -18,7 +18,7 @@ import FormBtnSubmit from "../../../Components/FormBtnSubmit";
 export default {
     name: "Create",
 
-    props: ['user', 'breadcrumb'],
+    props: ['user', 'breadcrumb', 'code'],
 
     data() {
         return {

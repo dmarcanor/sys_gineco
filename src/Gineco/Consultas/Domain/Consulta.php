@@ -15,6 +15,7 @@ use SysGineco\Gineco\Shared\Domain\ValueObjects\DateTimeValueObject;
 final class Consulta
 {
     CONST TABLE = 'consultas';
+    CONST PREFIX = 'CON';
 
     private $id;
     private $pacienteId;

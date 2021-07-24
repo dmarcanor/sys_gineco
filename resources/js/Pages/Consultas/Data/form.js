@@ -7,7 +7,7 @@ export default (contex, method) => {
         id: method === 'POST' ? uuid() : '',
         codigo: '',
         paciente_id: '',
-        fecha: moment().format('YYYY-MM-DDTHH:mm:ss'),
+        fecha: moment().format('YYYY-MM-DDTHH:mm'),
         observaciones: '',
         indicaciones: '',
         motivo: '',
