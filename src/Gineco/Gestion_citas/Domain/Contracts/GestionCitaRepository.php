@@ -10,5 +10,5 @@ interface GestionCitaRepository
 {
     public function create(GestionCita $gestionCita): void;
     public function update (GestionCita $gestionCita): void;
-    public function delete (GestionCitaId $id): ?GestionCita;
+    public function find (GestionCitaId $id): ?GestionCita;
 }
