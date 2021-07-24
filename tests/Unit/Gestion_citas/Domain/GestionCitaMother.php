@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Gestion_citas\Domain;
 
-use SysGineco\Gineco\Gestion_citas\Application\GestionCitasCreatorRequest;
+use SysGineco\Gineco\Gestion_citas\Application\Create\GestionCitasCreatorRequest;
 use SysGineco\Gineco\Gestion_citas\Domain\GestionCita;
 use SysGineco\Gineco\Gestion_citas\Domain\ValueObjects\GestionCitaCodigo;
 use SysGineco\Gineco\Gestion_citas\Domain\ValueObjects\GestionCitaEcografia;

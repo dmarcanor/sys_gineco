@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace SysGineco\Gineco\Gestion_citas\Application;
+namespace SysGineco\Gineco\Gestion_citas\Application\Create;
 
 use SysGineco\Gineco\Gestion_citas\Domain\Contracts\GestionCitaRepository;
 use SysGineco\Gineco\Gestion_citas\Domain\GestionCita;

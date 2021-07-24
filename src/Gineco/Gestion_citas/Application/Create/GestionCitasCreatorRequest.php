@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace SysGineco\Gineco\Gestion_citas\Application;
+namespace SysGineco\Gineco\Gestion_citas\Application\Create;
 
 final class GestionCitasCreatorRequest
 {

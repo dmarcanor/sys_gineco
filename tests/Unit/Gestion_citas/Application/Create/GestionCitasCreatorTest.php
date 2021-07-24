@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Tests\Unit\Gestion_citas\Application;
+namespace Tests\Unit\Gestion_citas\Application\Create;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use SysGineco\Gineco\Gestion_citas\Application\GestionCitaCreator;
+use SysGineco\Gineco\Gestion_citas\Application\Create\GestionCitaCreator;
 use SysGineco\Gineco\Gestion_citas\Domain\Contracts\GestionCitaRepository;
 use SysGineco\Gineco\Gestion_citas\Domain\GestionCita;
 use Tests\TestCase;

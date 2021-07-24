@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Tests\Unit\Gestion_citas\Application;
+namespace Tests\Unit\Gestion_citas\Application\Create;
 
-use SysGineco\Gineco\Gestion_citas\Application\GestionCitasCreatorRequest;
+use SysGineco\Gineco\Gestion_citas\Application\Create\GestionCitasCreatorRequest;
 use SysGineco\Gineco\Gestion_citas\Domain\ValueObjects\GestionCitaEcografia;
 use Tests\Unit\Gestion_citas\Domain\GestionCitaCodigoMother;
 use Tests\Unit\Gestion_citas\Domain\GestionCitaEcografiaMother;
