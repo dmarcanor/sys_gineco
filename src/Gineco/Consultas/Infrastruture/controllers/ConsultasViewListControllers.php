@@ -4,7 +4,6 @@
 namespace SysGineco\Gineco\Consultas\Infrastruture\controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
@@ -14,6 +13,7 @@ class ConsultasViewListControllers extends Controller
 
     public function execute(Request $request)
     {
+        //@todo: move this logic to an application service.
         $rows = DB::table('consultas')
             ->join('pacientes', 'pacientes.id', '=', 'consultas.paciente_id')
 //            ->where(function (Builder $builder) use ($request) {
