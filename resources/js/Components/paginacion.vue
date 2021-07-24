@@ -1,20 +1,18 @@
 <template>
-    <nav class="d-flex justify-content-between">
+    <nav class="d-flex justify-content-center">
         <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="#" v-if="paginacion.current_page > 1"
-                   @click.prevent="buscar(paginacion.current_page - 1)">Ant</a>
+            <li class="page-item" :class="paginacion.current_page == 1 ? 'disabled' : ''">
+                <button type="button" class="page-link" :disabled="paginacion.current_page == 1"
+                   @click.prevent="buscar(paginacion.current_page - 1)">Ant</button>
             </li>
             <li class="page-item" v-for="page in pagesNumber" :key="page"
                 :class="page === isActived ? 'active' : ''">
                 <a class="page-link" href="#" @click.prevent="buscar(page)" v-text="page"></a>
             </li>
-            <li class="page-item">
-                <a class="page-link" href="#" v-if="paginacion.current_page < paginacion.last_page"
-                   @click.prevent="buscar(paginacion.current_page + 1)">Sig</a>
+            <li class="page-item" :class="paginacion.current_page == paginacion.last_page == 1 ? 'disabled' : ''">
+                <button  type="button" class="page-link" :disabled="paginacion.current_page == paginacion.last_page"
+                   @click.prevent="buscar(paginacion.current_page + 1)">Sig</button>
             </li>
-        </ul>
-        <ul class="pagination">
             <li class="page-item">
                 <p class="page-link">Total: {{paginacion.total}}</p>
             </li>
@@ -26,10 +24,18 @@
 </template>
 
 <script>
+import Button from "../Jetstream/Button";
 export default {
     name: "paginacion",
-
-    props: ['paginacion', 'params'],
+    components: {Button},
+    props: {
+        paginacion: {
+            required: true,
+        },
+        params: {
+            required: true,
+        }
+    },
 
     data() {
         return {
@@ -83,6 +89,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
