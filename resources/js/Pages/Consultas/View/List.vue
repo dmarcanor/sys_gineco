@@ -1,38 +1,42 @@
 <template>
-    <app-layout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Consultas
-            </h2>
-        </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="grid grid-cols-12 gap-4">
-                    <div class="col-span-12 sm:col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-4 bg-white overflow-hidden shadow-xl sm:rounded-lg py-2 px-2">
-                        Consultas
-                    </div>
-                    <div class="col-span-12 sm:col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-8 bg-white overflow-hidden shadow-xl sm:rounded-lg py-2 px-2">
-                        Lista
-                    </div>
-                </div>
-            </div>
-        </div>
-    </app-layout>
+    <app-body :user="user" :breadcrumb="breadcrumb">
+        <main>
+            <search-panel :params="params"></search-panel>
+            <main-table :rows="rows"></main-table>
+        </main>
+    </app-body>
 </template>
 
 <script>
-import AppLayout from '@/Layouts/AppLayout'
+import params from "@/Pages/Consultas/Data/params";
+import configTable from "@/Pages/Consultas/Data/configTable";
+
+import AppBody from "@/Components/AppBody";
+import MainTable from "@/Pages/Consultas/List/MainTable";
+import SearchPanel from "@/Pages/Consultas/List/SearchPanel";
+
+import {nextTick} from 'vue'
 
 export default {
     name: "List",
 
+    props: ['rows', 'user', 'breadcrumb'],
+
+    data() {
+        return {
+            params: params(),
+            table: configTable(this)
+        }
+    },
+
     components: {
-        AppLayout,
+        AppBody,
+        MainTable,
+        SearchPanel,
     },
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
