@@ -72,7 +72,7 @@ export default {
                 let id2 = $(e.target).attr("data-id");
                 let id3 = $(e.target).data('id');
                 context.$refs.ModalOpciones.hide();
-                context.$inertia.get(context.route('pacientes.ver', id));
+                context.$inertia.get(context.route('consultas.ver', id));
             });
         }
     },

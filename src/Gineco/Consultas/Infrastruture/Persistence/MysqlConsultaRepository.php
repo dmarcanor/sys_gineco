@@ -32,7 +32,7 @@ final class MysqlConsultaRepository implements ConsultaRepository
     public function update(Consulta $consulta): void
     {
         DB::table(Consulta::TABLE)
-            ->find($consulta->id()->value())
+            ->where('id', '=', $consulta->id()->value())
             ->update([
                 'id'            => $consulta->id()->value(),
                 'paciente_id'   => $consulta->pacienteId(),

@@ -2,7 +2,7 @@
     <app-body :user="user" :breadcrumb="breadcrumb">
         <main>
             <form @submit.prevent="save">
-                <generals-details :form="form" :config="config" :code="code"></generals-details>
+                <generals-details :form="form" :config="config"></generals-details>
                 <form-btn-submit :linkRoute="route('consultas.list')" :disabled="form.processing"></form-btn-submit>
             </form>
         </main>
@@ -11,26 +11,34 @@
 
 <script>
 
-import form from "@/Pages/Consultas/Data/form"
-import AppBody from "@/Components/AppBody";
+import AppBody from "../../../Components/AppBody";
 import GeneralsDetails from "../Form/GeneralsDetails";
 import FormBtnSubmit from "../../../Components/FormBtnSubmit";
-export default {
-    name: "Create",
 
-    props: ['user', 'breadcrumb', 'code'],
+import form from "@/Pages/Consultas/Data/form"
+
+export default {
+    name: "Edit",
+
+    props: ['consulta', 'user', 'breadcrumb'],
 
     data() {
         return {
-            form: form(this, 'POST'),
+            form: form(this, 'PUT'),
             config: {
-                view: 'crear'
+                view: 'editar'
             }
         }
     },
+
+    mounted() {
+        this.form = {...this.form, ...this.consulta};
+        console.log(this.form, this.consulta);
+    },
+
     methods: {
         save() {
-            this.form.post(route('consultas.create'), {
+            this.form.put(route('consultas.update'), {
                 onSuccess: () => {
                     this.$toast.success("Solicitud realizada con exito", {duration: 5000, position: "top-right"});
                 },
@@ -45,10 +53,12 @@ export default {
             // })
         },
     },
+
+
     components: {
-        FormBtnSubmit,
-        GeneralsDetails,
         AppBody,
+        GeneralsDetails,
+        FormBtnSubmit,
     },
 }
 </script>

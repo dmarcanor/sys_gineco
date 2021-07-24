@@ -92,16 +92,16 @@ final class Consulta
     ): self
     {
         return new self(
-            $id,
+            new ConsultaId($id),
             $pacienteId,
-            $codigo,
-            $fecha,
-            $observacion,
-            $indicacion,
-            $motivo,
-            $reposoMedico,
-            $createdAt,
-            $updatedAt
+            new ConsultaCodigo($codigo),
+            new DateTimeValueObject($fecha),
+            new ConsultaObservacion($observacion),
+            new ConsultaIndicacion($indicacion),
+            new ConsultaMotivo($motivo),
+            new ConsultaReposoMedico($reposoMedico),
+            new DateTimeValueObject($createdAt),
+            new DateTimeValueObject($updatedAt)
         );
     }
 
@@ -200,4 +200,17 @@ final class Consulta
         $this->updatedAt = new DateTimeValueObject();
     }
 
+    public function toResponse(): array
+    {
+        return [
+            'id'            => $this->id()->value(),
+            'codigo'        => $this->codigo()->value(),
+            'paciente_id'   => $this->pacienteId(),
+            'fecha'         => $this->fecha()->format('Y-m-d\TH:i'),
+            'motivo'        => $this->motivo()->value(),
+            'indicaciones'    => $this->indicacion()->value(),
+            'observaciones'   => $this->observacion()->value(),
+            'reposo'        => $this->reposoMedico()->value()
+        ];
+    }
 }
