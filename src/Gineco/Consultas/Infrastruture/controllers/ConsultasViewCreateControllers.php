@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use SysGineco\Gineco\Consultas\Domain\Consulta;
+use SysGineco\Gineco\Shared\Domain\ValueObjects\DateTimeValueObject;
 
 class ConsultasViewCreateControllers extends Controller
 {
@@ -23,7 +24,7 @@ class ConsultasViewCreateControllers extends Controller
 
         return Inertia::render('Consultas/View/Create', [
             'breadcrumb' => $this->getBreadcrumb(),
-            'code' => Consulta::PREFIX . $newCode
+            'code' => $newCode
         ]);
     }
 
@@ -48,10 +49,13 @@ class ConsultasViewCreateControllers extends Controller
         ];
     }
 
-    private function getNewCode(?\stdClass $last_code): ?int
+    private function getNewCode(?\stdClass $last_code): ?string
     {
-        $newCode = substr($last_code->codigo, 3);
+        if (empty($last_code))
+            return Consulta::PREFIX . DateTimeValueObject::now()->format('y') . '000001';
 
-        return (int)$newCode + 1;
+        $newCode = substr($last_code->codigo, 3) + 1;
+
+        return Consulta::PREFIX . $newCode;
     }
 }

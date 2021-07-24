@@ -14,22 +14,36 @@
 
                     <div class="form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
                         <label>Paciente <span style="color: red">*</span></label>
-                        <select2 :id="'paciente_id'" name="paciente_id" v-model="paciente_id" :settings="settingsSelectAjax" required>
+                        <select2 :id="'paciente_id'"
+                                 name="paciente_id"
+                                 v-model="paciente_id"
+                                 :settings="settingsSelectAjax"
+                                 required>
                         </select2>
                     </div>
 
                     <div class="form-group col-xs-12 col-sm-6 col-md-3 col-lg-3">
                         <label>Fecha de la consulta <span style="color: red">*</span></label>
-                        <input type="datetime-local" name="fecha" class="form-control" id="fecha" required
-                               v-model="fecha"/>
+                        <input type="datetime-local"
+                               name="fecha"
+                               class="form-control"
+                               id="fecha"
+                               v-model="fecha"
+                               :disabled="isEditar"
+                               required/>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
                         <label>Motivo <span style="color: red">*</span></label>
-                        <input type="text" name="motivo" class="form-control" id="motivo" required
-                               v-model="motivo"/>
+                        <input type="text"
+                               name="motivo"
+                               class="form-control"
+                               id="motivo"
+                               v-model="motivo"
+                               :disabled="isEditar"
+                               required/>
                     </div>
                 </div>
 
@@ -71,7 +85,7 @@ import {nextTick} from 'vue'
 export default {
     name: "GeneralsDetails",
 
-    props: ['form', 'code'],
+    props: ['form', 'config', 'code'],
 
     data() {
         return {
@@ -88,7 +102,6 @@ export default {
                 ajax: {
                     url: '/pacientes/ajax_get_paciente',
                     data: function (params) {
-                        console.log(params);
                         return {search: params.term}
                     }
                 }
@@ -117,6 +130,12 @@ export default {
         },
         mySelectEvent({id, text}) {
             console.log({id, text}, 'mySelectEvent')
+        }
+    },
+
+    computed: {
+        isEditar() {
+            return this.config.view === 'editar';
         }
     },
 
