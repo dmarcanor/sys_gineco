@@ -15,6 +15,7 @@ class RouteServiceProvider extends ServiceProvider
         'src/Gineco/Dashboard/Infrastruture/config/routerWeb.php',
         'src/Gineco/Consultas/Infrastruture/config/routerWeb.php',
         'src/Gineco/Pacientes/Infrastruture/config/routerWeb.php',
+        'src/Gineco/Profile/Infrastructure/config/routerWeb.php',
     ];
 
     /**

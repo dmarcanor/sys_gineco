@@ -49,7 +49,9 @@
                     <div class="dropdown-header text-center">
                         <strong>Cuenta</strong>
                     </div>
-                    <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Perfil</a>
+                    <inertia-link :href="route('profile')" class="dropdown-item">
+                        <i class="fa fa-user"></i> Perfil
+                    </inertia-link>
                     <a class="dropdown-item" href="#" @click.prevent="logout"><i class="fa fa-lock"></i> Cerrar sesión</a>
                 </div>
             </li>

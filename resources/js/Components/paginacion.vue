@@ -13,10 +13,10 @@
                 <button  type="button" class="page-link" :disabled="paginacion.current_page == paginacion.last_page"
                    @click.prevent="buscar(paginacion.current_page + 1)">Sig</button>
             </li>
-            <li class="page-item">
+            <li class="page-item disabled">
                 <p class="page-link">Total: {{paginacion.total}}</p>
             </li>
-            <li class="page-item">
+            <li class="page-item disabled">
                 <p class="page-link">Paginas: {{paginacion.last_page}}</p>
             </li>
         </ul>
