@@ -27,10 +27,10 @@ final class ConsultasPostControllers extends Controller
             !empty($request->paciente_id) ? (string) $request->paciente_id : '',
             !empty($request->codigo) ? (string) $request->codigo : '',
             !empty($request->fecha) ? (string) $request->fecha : '',
-            !empty($request->observacion) ? (string) $request->observacion : '',
-            !empty($request->indicacion) ? (string) $request->indicacion : '',
+            !empty($request->observaciones) ? (string) $request->observaciones : '',
+            !empty($request->indicaciones) ? (string) $request->indicaciones : '',
             !empty($request->motivo) ? (string) $request->motivo : '',
-            !empty($request->reposo_medico) ? (string) $request->reposo_medico : ''
+            !empty($request->reposo) ? (string) $request->reposo : ''
         ));
 
         return redirect()->route('consultas.list');
@@ -39,6 +39,7 @@ final class ConsultasPostControllers extends Controller
     private function validateRequest(Request $request): void
     {
         $request->validate([
+            'codigo' => 'required',
             'paciente_id' => 'required',
             'fecha' => 'required'
         ]);

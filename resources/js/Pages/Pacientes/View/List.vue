@@ -1,8 +1,11 @@
 <template>
     <app-body :user="user" :breadcrumb="breadcrumb">
         <main>
-            <search-panel :params="params"></search-panel>
-            <main-table :rows="rows"></main-table>
+            <search-panel
+                :params="params"
+                @buscar="buscar"
+                @limpiar="limpiar"></search-panel>
+            <main-table :rows="rows" :paginacion="paginacion" :params="params"  @buscar="buscar"></main-table>
         </main>
     </app-body>
 </template>
@@ -20,7 +23,7 @@ import {nextTick} from 'vue'
 export default {
     name: "List",
 
-    props: ['rows', 'user', 'breadcrumb'],
+    props: ['rows', 'paginacion', 'user', 'breadcrumb'],
 
     data() {
         return {
@@ -34,6 +37,15 @@ export default {
         MainTable,
         SearchPanel,
     },
+
+    methods: {
+        buscar() {
+            this.$inertia.replace(this.route('pacientes.listar', this.params))
+        },
+        limpiar() {
+            this.params = params();
+        },
+    }
 }
 </script>
 
