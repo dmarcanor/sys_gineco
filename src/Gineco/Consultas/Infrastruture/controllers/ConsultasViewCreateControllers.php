@@ -14,6 +14,7 @@ class ConsultasViewCreateControllers extends Controller
 
     public function execute()
     {
+        // @todo: move this logic to an application service.
         $last_code = DB::table('consultas')
             ->orderBy('id', 'desc')
             ->take(1)
