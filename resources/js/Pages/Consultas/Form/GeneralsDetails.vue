@@ -122,7 +122,6 @@ export default {
 
     watch: {
         codigo(val) {
-            console.log(val);
             this.form['codigo'] = val;
         },
         fecha(val) {
