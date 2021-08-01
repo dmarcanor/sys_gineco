@@ -1,6 +1,5 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 use SysGineco\Gineco\Consultas\Infrastruture\controllers\ConsultasPostControllers;
 use SysGineco\Gineco\Consultas\Infrastruture\controllers\ConsultasPutControllers;
 use SysGineco\Gineco\Consultas\Infrastruture\controllers\ConsultasViewCreateControllers;

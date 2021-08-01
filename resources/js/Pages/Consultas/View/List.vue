@@ -1,7 +1,10 @@
 <template>
     <app-body :user="user" :breadcrumb="breadcrumb">
         <main>
-            <search-panel :params="params"></search-panel>
+            <search-panel
+                :params="params"
+                @buscar="buscar"
+                @limpiar="limpiar"></search-panel>
             <main-table :rows="rows"></main-table>
         </main>
     </app-body>
@@ -15,8 +18,6 @@ import AppBody from "@/Components/AppBody";
 import MainTable from "@/Pages/Consultas/List/MainTable";
 import SearchPanel from "@/Pages/Consultas/List/SearchPanel";
 
-import {nextTick} from 'vue'
-
 export default {
     name: "List",
 
@@ -27,6 +28,15 @@ export default {
             params: params(),
             table: configTable(this)
         }
+    },
+
+    methods: {
+        buscar() {
+            this.$inertia.replace(this.route('consultas.list', this.params))
+        },
+        limpiar() {
+            this.params = params();
+        },
     },
 
     components: {

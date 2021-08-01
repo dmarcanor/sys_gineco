@@ -23,4 +23,9 @@ class MysqlQueryFilters
         return $this->builder;
     }
 
+    function getValue($value): array
+    {
+        return is_array($value) ? $value : [$value];
+    }
+
 }
