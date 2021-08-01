@@ -1,9 +1,6 @@
 <template>
     <div class="container-fluid">
         <div class="card">
-            <pre>
-                {{ rows }}
-            </pre>
             <div class="card-header">
                 <i class="fa fa-align-justify"></i> Tabla Principal
                 <button type="button" class="btn btn-secondary" @click.prevent="IrFormularioCrear">
