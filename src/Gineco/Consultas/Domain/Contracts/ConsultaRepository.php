@@ -14,4 +14,6 @@ interface ConsultaRepository
     public function update(Consulta $consulta): void;
 
     public function find(ConsultaId $id): ?Consulta;
+
+    public function searcherList(array $clause);
 }

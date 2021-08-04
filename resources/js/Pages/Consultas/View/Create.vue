@@ -3,6 +3,7 @@
         <main>
             <form @submit.prevent="save">
                 <generals-details :form="form" :config="config" :code="code"></generals-details>
+                <documents :form="form" :config="config"></documents>
                 <form-btn-submit :linkRoute="route('consultas.list')" :disabled="form.processing"></form-btn-submit>
             </form>
         </main>
@@ -14,6 +15,7 @@
 import form from "@/Pages/Consultas/Data/form"
 import AppBody from "@/Components/AppBody";
 import GeneralsDetails from "../Form/GeneralsDetails";
+import Documents from "../Form/Documents";
 import FormBtnSubmit from "../../../Components/FormBtnSubmit";
 export default {
     name: "Create",
@@ -48,6 +50,7 @@ export default {
     components: {
         FormBtnSubmit,
         GeneralsDetails,
+        Documents,
         AppBody,
     },
 }

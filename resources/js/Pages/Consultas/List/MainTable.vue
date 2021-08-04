@@ -21,7 +21,7 @@
                     <tbody v-if="rows.length >= 1">
                     <tr v-for="row in rows">
                         <td>{{row.codigo}}</td>
-                        <td>{{row.paciente_nombre}}</td>
+                        <td>{{ pacienteNombre(row) }}</td>
                         <td>{{row.fecha}}</td>
                         <td>
                             <button type="button" class="btn btn-primary btn-sm btn-block" @click.prevent="opciones(row)">Opciones</button>
@@ -74,6 +74,9 @@ export default {
                 context.$refs.ModalOpciones.hide();
                 context.$inertia.get(context.route('consultas.ver', id));
             });
+        },
+        pacienteNombre(row) {
+            return row.paciente_nombre + ' ' + row.paciente_apellido;
         }
     },
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace SysGineco\Gineco\Consultas\Infrastruture\Persistence;
 
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use SysGineco\Gineco\Consultas\Domain\Consulta;
 use SysGineco\Gineco\Consultas\Domain\Contracts\ConsultaRepository;
@@ -65,5 +66,15 @@ final class MysqlConsultaRepository implements ConsultaRepository
                 (string) $consulta->created_at,
                 (string) $consulta->updated_at,
             );
+    }
+
+    public function searcherList(array $clause)
+    {
+        $query = DB::table(Consulta::TABLE)
+            ->where(function (Builder $builder) use($clause) {
+                (new MysqlConsultaFilters())->apply($builder, $clause);
+            });
+
+        return $query->paginate(10);
     }
 }

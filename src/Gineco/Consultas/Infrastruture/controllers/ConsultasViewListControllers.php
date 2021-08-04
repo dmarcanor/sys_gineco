@@ -5,36 +5,29 @@ namespace SysGineco\Gineco\Consultas\Infrastruture\controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
+use SysGineco\Gineco\Consultas\Application\Searcher\ConsultaSearcher;
+use SysGineco\Gineco\Consultas\Application\Searcher\ConsultaSearcherRequest;
 
 class ConsultasViewListControllers extends Controller
 {
+    private $searcher;
+
+    public function __construct(ConsultaSearcher $searcher)
+    {
+        $this->searcher = $searcher;
+    }
+
 
     public function execute(Request $request)
     {
-        //@todo: move this logic to an application service.
-        $rows = DB::table('consultas')
-            ->join('pacientes', 'pacientes.id', '=', 'consultas.paciente_id')
-//            ->where(function (Builder $builder) use ($request) {
-//                if($request->nombre)
-//                    $builder->where('consultas.nombre', 'like', "%{$request->nombre}%");
-//
-//                if($request->apellido)
-//                    $builder->where('pacientes.apellido', 'like', "%{$request->apellido}%");
-//            })
-            ->orderBy('consultas.created_at', 'desc')
-            ->select([
-                'consultas.id',
-                'consultas.codigo',
-                'consultas.paciente_id',
-                DB::raw('pacientes.nombre as paciente_nombre'),
-                DB::raw('pacientes.apellido as paciente_apellido'),
-                'consultas.fecha'
-            ])->get();
+        $response = ($this->searcher)(new ConsultaSearcherRequest(
+            $request->all()
+        ));
 
         return Inertia::render('Consultas/View/List', [
-            'rows' => $rows,
+            'rows' => $response->rows(),
+            'paginacion' => $response->paginacion(),
             'breadcrumb' => $this->getBreadcrumb()
         ]);
     }
