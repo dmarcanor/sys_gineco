@@ -1,5 +1,6 @@
 import {uuid} from '@/Pages/Shared/helpers';
 import moment from "moment";
+import document from "./documents";
 
 export default (contex, method) => {
     return contex.$inertia.form({
@@ -11,6 +12,7 @@ export default (contex, method) => {
         observaciones: '',
         indicaciones: '',
         motivo: '',
-        reposo: ''
+        reposo: '',
+        documentos: [document(method)]
     })
 }

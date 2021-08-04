@@ -62,10 +62,6 @@ export default {
 
     data() {
         return {
-            codigo: '',
-            fecha_desde: '',
-            fecha_hasta: '',
-            paciente_id: '',
             settingsSelectAjax: {
                 width: '100%',
                 placeholder: 'Seleccione',
